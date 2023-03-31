@@ -41,7 +41,6 @@ export default function PrimarySearchAppBar() {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const dispatch = useDispatch()
-  const usuarioActual = useSelector(state => state.user)
   const userLogged = useSelector(state => state.user)
   const cart = useSelector(state => state.cart)
   const [aux, setAux]=useState(0)
@@ -63,19 +62,13 @@ export default function PrimarySearchAppBar() {
             alert("login")
           }
         }
-  useEffect(()=>{
-    if(user){
-      dispatch(createAuth0User(user))
-      dispatch(getAuth0User(user.sub))
-    }
-  }, [user]);
 
-  useEffect(() => {
-    if (user  && Object.entries(usuarioActual).length) {
-      console.log(usuarioActual.cart);
-      dispatch(setSavedCarrito(usuarioActual.cart));
-    }
-  }, [usuarioActual]);
+  // useEffect(() => {
+  //   if (user  && Object.entries(usuarioActual).length) {
+  //     console.log(usuarioActual.cart);
+  //     dispatch(setSavedCarrito(usuarioActual.cart));
+  //   }
+  // }, [usuarioActual]);
   
   // useEffect(() => {
   //   if(Object.entries(usuarioActual).length){

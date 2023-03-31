@@ -222,9 +222,9 @@ export function getAuth0User(sub) {
 export function createAuth0User (user) {
   return async dispatch => {
     try {
-      console.log(user);
       const {name, nickname, email, sub} = user;
       const newAuth0User = {name, nickname, email, sub}
+      console.log(newAuth0User);
       // await axios.post(`http://localhost:3001/auth0Users`, newAuth0User)
       await axios.post(`http://el-bodegon-api-wine.vercel.app/auth0Users`, newAuth0User)
 

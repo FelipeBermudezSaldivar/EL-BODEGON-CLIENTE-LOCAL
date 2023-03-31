@@ -19,9 +19,21 @@ import UserTable from "./components/Dashboard/UserTable/UserTable";
 import FoodEditor from "./components/Dashboard/FoodTable/FoodTable";
 import FoodTable from "./components/Dashboard/FoodTable/FoodTable";
 import FoodUpdate from "./components/Dashboard/FoodUpdate/FoodUpdate";
+import { useDispatch } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
+import { createAuth0User } from "./redux/actions/actions";
 
 
 function App() {
+  const {user, isAuthenticated} = useAuth0()
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (isAuthenticated && auth0User) {
+      dispatch(createAuth0User(user));
+    }
+  }, [isAuthenticated, auth0User, dispatch]);
+
   const [isDarkMode, setIsDarkMode] = useState(false);
   const handleModeChange = () => {
     setIsDarkMode(!isDarkMode);
