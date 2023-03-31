@@ -21,7 +21,7 @@ import FoodTable from "./components/Dashboard/FoodTable/FoodTable";
 import FoodUpdate from "./components/Dashboard/FoodUpdate/FoodUpdate";
 import { useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
-import { createAuth0User } from "./redux/actions/actions";
+import { createAuth0User, getAuth0User } from "./redux/actions/actions";
 
 
 function App() {
@@ -31,6 +31,7 @@ function App() {
   useEffect(() => {
     if (isAuthenticated && user) {
       dispatch(createAuth0User(user));
+      dispatch(getAuth0User(user.sub))
     }
   }, [isAuthenticated, user, dispatch]);
 
