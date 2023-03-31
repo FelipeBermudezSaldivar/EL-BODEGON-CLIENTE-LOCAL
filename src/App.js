@@ -11,7 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Profile from "./components/LoginComponents/Profile/Profile";
 import { ShoppingCart } from "./components/ShoppingCart/ShoppingCart";
 import LoginPage from "./components/LoginComponents/LoginPage/LoginPage";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Switch from "react-switch";
 import Dashboard from "./components/Dashboard/Dashboard";
 import UserList from "./components/Dashboard/UserList/UserList";
@@ -29,10 +29,10 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (isAuthenticated && auth0User) {
+    if (isAuthenticated && user) {
       dispatch(createAuth0User(user));
     }
-  }, [isAuthenticated, auth0User, dispatch]);
+  }, [isAuthenticated, user, dispatch]);
 
   const [isDarkMode, setIsDarkMode] = useState(false);
   const handleModeChange = () => {
