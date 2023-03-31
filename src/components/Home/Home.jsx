@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
-import { createAuth0User, getAuth0User, setSavedCarrito } from "../../redux/actions/actions";
 import CarrouselHome from "../CarrouselHome/CarrouselHome";
 import El_Bodegon_de_Tony from "../images/El_Bodegon_de_Tony.png"
 

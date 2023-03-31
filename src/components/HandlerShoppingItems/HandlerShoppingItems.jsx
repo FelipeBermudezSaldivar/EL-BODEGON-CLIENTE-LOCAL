@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTotalPrice, reduceTotalPrice, addProduct, removeProduct, removeManyProducts, saveCarrito, uploadProducts } from "../../redux/actions/actions";
+import { addTotalPrice, reduceTotalPrice, addProduct, removeProduct, removeManyProducts } from "../../redux/actions/actions";
 import Swal from "sweetalert2"
 
 

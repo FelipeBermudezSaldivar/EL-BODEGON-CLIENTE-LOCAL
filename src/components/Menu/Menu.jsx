@@ -6,19 +6,14 @@ import style from "./Menu.module.css"
 import { useDispatch } from "react-redux"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import { getCategories, setLocalCarrito, saveCarrito, createAuth0User } from "../../redux/actions/actions"
-import { fontWeight } from "@mui/system"
-import { useAuth0 } from "@auth0/auth0-react";
+import { saveCarrito } from "../../redux/actions/actions"
+
 
 const Menu = () => {
     const dispatch = useDispatch();
     const allDishes = useSelector(state => state.allDishes)
     const categories = useSelector(state => state.categories)
     const cart = useSelector(state => state.cart)
-    let totalPrice = 0
-    cart.forEach(item => {
-        totalPrice += (item.price * item.quantity)
-    });
     const userLogged = useSelector(state => state.user)
     const dishesPerPage = 9
     const [currentPage, setCurrentPage] = useState(1);
@@ -26,28 +21,29 @@ const Menu = () => {
     const lastDishIndex = currentPage * dishesPerPage;
     const firstDishIndex = lastDishIndex - dishesPerPage;
     const currentDishes = allDishes.slice(firstDishIndex, lastDishIndex)
-    const { isAuthenticated, user, isLoading } = useAuth0();
 
+    let totalPrice = 0
 
-    useEffect(()=>{
-        const localCarrito = JSON.parse(localStorage.getItem('Cart'))
-        if(!user){
-            if(!isLoading){
-                console.log(localCarrito);
-                dispatch(setLocalCarrito(localCarrito))
-            }
-        } else {
+  cart.forEach(item => {
+    totalPrice += item.price * item.quantity
+  });
 
-        }
-        dispatch(getCategories())
-    },[])
-    useEffect(()=>{
-        if(user){
-          dispatch(createAuth0User(user))
-        //   dispatch(getAuth0User(user.sub))
-        }
-      }, [user]);
+  useEffect(() => {
+    handleSaveCarrito(cart)
+    console.log("pasoxuseeffect");
+    console.log(totalPrice);
+  }, [totalPrice])
 
+  const handleSaveCarrito = (cart) => {
+    //   if(userLogged){
+    // setAux(aux + 1)
+    console.log("holaaa")
+    console.log(cart)
+    dispatch(saveCarrito({ cart, id: userLogged.sub }))
+    //   } else {
+    //     alert("login")
+    //   }
+  }
     return (
         <div className={style.menu}>
             <h2 className={style.title}>Menú</h2>
@@ -59,7 +55,7 @@ const Menu = () => {
                 dishesPerPage={dishesPerPage} 
                 setCurrentPage={setCurrentPage}
                 currentPage={currentPage}/>
-                        <p>{totalPrice}</p>   
+                        
 
         </div>
 

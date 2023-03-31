@@ -11,7 +11,7 @@ const Cards = ({ slicedDishes }) => {
   const [aux, setAux] = useState(0)
   let totalPrice = 0
   cart.forEach(item => {
-    totalPrice += (item.price * item.quantity)
+    totalPrice += item.price * item.quantity
   });
 
   useEffect(() => {
@@ -21,15 +21,11 @@ const Cards = ({ slicedDishes }) => {
   }, [totalPrice])
 
   const handleSaveCarrito = (cart) => {
-    //   if(userLogged){
-    // setAux(aux + 1)
     console.log("holaaa")
     console.log(cart)
     dispatch(saveCarrito({ cart, id: userLogged.sub }))
-    //   } else {
-    //     alert("login")
-    //   }
   }
+
 
   return (
     <div className={style.Cards}>

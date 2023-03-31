@@ -4,30 +4,30 @@ import style from "./ShoppingCart.module.css"
 import ShoppingItem from '../ShoppingItem/ShoppingItem'
 import ShoppingCheckout from '../ShoppingCheckout/ShoppingCheckout'
 import ShoppingDeleteButton from '../ShoppingDeleteButton.jsx/ShoppingDeleteButton'
-import { saveCarrito, setLocalCarrito, uploadProducts } from '../../redux/actions/actions'
 import { Link } from 'react-router-dom'
-import { useAuth0 } from '@auth0/auth0-react'
+import { saveCarrito } from '../../redux/actions/actions'
 
 export const ShoppingCart = () => {
+  const dispatch = useDispatch()
+  const userLogged = useSelector(state => state.user )
   const cart = useSelector(state => state.cart)
   const carrito = useSelector(state => state.cart)
   const [aux, setAux] = useState("")
-  const dispatch = useDispatch()
-  const userLogged = useSelector(state=>state.user)
-  const {isLoading, user}=useAuth0()
-  useEffect(()=>{
-    const localCarrito = JSON.parse(localStorage.getItem('Cart'))
-    console.log(localCarrito);
-    if(!user){
-      if(!isLoading){
-        setAux(aux+1)
-        console.log(localCarrito);
-        dispatch(setLocalCarrito(localCarrito))
-        }
-    } else {
 
-    }
-},[])
+  let totalPrice = 0
+  cart.forEach(item => {
+    totalPrice += item.price * item.quantity
+  });
+
+  useEffect(() => {
+    handleSaveCarrito(cart)
+    console.log("pasoxuseeffect");
+    console.log(totalPrice);
+  }, [totalPrice])
+
+  const handleSaveCarrito = (cart) => {
+    dispatch(saveCarrito({ cart, id: userLogged.sub }))
+  }
   useEffect(()=>{
     console.log(carrito);
   },[carrito])

@@ -184,7 +184,9 @@ switch (type) {
         return {...state, cart: payload}
 
     case GET_AUTH0_USER_BY_ID:
-        return {...state, user: payload}
+        console.log({payload: payload});
+        const {user, cart} = payload
+        return {...state, user, cart }
 
     case CREATE_PAYMENT:
         return {...state}

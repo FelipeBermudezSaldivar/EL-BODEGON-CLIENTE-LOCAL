@@ -130,7 +130,7 @@ export const saveCarrito = (payload) => {
       await axios.put(`https://el-bodegon-api-wine.vercel.app/cart/${payload.id}`, payload.cart)
       console.log("funciona");
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 }
 }
@@ -202,18 +202,26 @@ export function setOrderings (order) {
 export function getAuth0Users () {
   return async(dispatch)=>{
     const auth0Users = await axios.get(`https://el-bodegon-api-wine.vercel.app/auth0Users`)
-
     return dispatch({type: GET_AUTH0_USERS, payload: auth0Users.data})
   }
 }
 
-export function getAuth0User(sub) {
+export function getAuth0User(user) {
   return async dispatch => {
     try {
-      const auth0User = await axios.get(`https://el-bodegon-api-wine.vercel.app/auth0Users/${sub}`)
-      // const auth0User = await axios.get(`https://el-bodegon-api-wine.vercel.app/auth0Users/${sub}`)
-      console.log(auth0User.data[0]);
-      return dispatch({type: GET_AUTH0_USER_BY_ID, payload: auth0User.data[0]})
+      const auth0User = await axios.get(`https://el-bodegon-api-wine.vercel.app/auth0Users/${user.sub}`)
+      const auth0UserParsed = auth0User.data[0]
+
+      if(!auth0UserParsed.cart) {
+        await axios.put(`https://el-bodegon-api-wine.vercel.app/cart/${auth0UserParsed.sub}`, [])
+      }
+
+      const carritoId = auth0User.data[0].cart
+      const carrito = await axios.get(`https://el-bodegon-api-wine.vercel.app/cart/${carritoId}`)
+
+      console.log(carrito.data.items);
+
+      return dispatch({type: GET_AUTH0_USER_BY_ID, payload: {user: auth0UserParsed, cart: carrito.data.items}})
     } catch (error) {
       console.log(error);
     }

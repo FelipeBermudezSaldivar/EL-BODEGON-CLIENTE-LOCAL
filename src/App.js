@@ -14,24 +14,31 @@ import LoginPage from "./components/LoginComponents/LoginPage/LoginPage";
 import { useEffect, useState } from "react";
 import Switch from "react-switch";
 import Dashboard from "./components/Dashboard/Dashboard";
-import UserList from "./components/Dashboard/UserList/UserList";
 import UserTable from "./components/Dashboard/UserTable/UserTable";
 import FoodEditor from "./components/Dashboard/FoodTable/FoodTable";
 import FoodTable from "./components/Dashboard/FoodTable/FoodTable";
 import FoodUpdate from "./components/Dashboard/FoodUpdate/FoodUpdate";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
-import { createAuth0User, getAuth0User } from "./redux/actions/actions";
+import { createAuth0User, getAllDishes, getAuth0User, saveCarrito } from "./redux/actions/actions";
 
 
 function App() {
   const {user, isAuthenticated} = useAuth0()
   const dispatch = useDispatch()
 
+  const userLogged = useSelector(state => state.user)
+  const cart = useSelector(state => state.cart)
+  
+  
+  useEffect(()=>{
+    dispatch(getAllDishes())
+  },[])
+
   useEffect(() => {
     if (isAuthenticated && user) {
       dispatch(createAuth0User(user));
-      dispatch(getAuth0User(user.sub))
+      dispatch(getAuth0User(user))
     }
   }, [isAuthenticated, user, dispatch]);
 

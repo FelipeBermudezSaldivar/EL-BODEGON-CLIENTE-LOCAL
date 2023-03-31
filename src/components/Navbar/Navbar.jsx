@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createAuth0User, getAllDishes, getAuth0User, setSavedCarrito, saveCarrito} from "../../redux/actions/actions";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
@@ -47,41 +46,7 @@ export default function PrimarySearchAppBar() {
   const location =useLocation()
 
 
-  useEffect(()=>{
-    handleSaveCarrito(cart)
-    console.log("pasoxuseeffect");
-  },[cart])
   
-  const handleSaveCarrito = (cart) => {
-          if(userLogged){
-            setAux(aux + 1)
-            console.log(userLogged.sub)
-            console.log(cart)
-            dispatch(saveCarrito({cart, id: userLogged.sub}))
-          } else {
-            alert("login")
-          }
-        }
-
-  // useEffect(() => {
-  //   if (user  && Object.entries(usuarioActual).length) {
-  //     console.log(usuarioActual.cart);
-  //     dispatch(setSavedCarrito(usuarioActual.cart));
-  //   }
-  // }, [usuarioActual]);
-  
-  // useEffect(() => {
-  //   if(Object.entries(usuarioActual).length){
-  //     console.log(usuarioActual.cart);
-  //     dispatch(setSavedCarrito(usuarioActual.cart))
-  //   }
-  // }, []);
-
-
-  useEffect(() => {
-    dispatch(getAllDishes());
-    
-  }, []);
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
