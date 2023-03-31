@@ -230,7 +230,7 @@ export function createAuth0User (user) {
 
       return dispatch({type:CREATE_NEW_AUTH0_USER, payload:newAuth0User})
     } catch (error) {
-      console.log(error.message);
+      
     }
   }
 }
