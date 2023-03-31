@@ -226,11 +226,11 @@ export function createAuth0User (user) {
       const newAuth0User = {name, nickname, email, sub}
       console.log(newAuth0User);
       // await axios.post(`http://localhost:3001/auth0Users`, newAuth0User)
-      await axios.post(`http://el-bodegon-api-wine.vercel.app/auth0Users`, newAuth0User)
+      await axios.post(`https://el-bodegon-api-wine.vercel.app/auth0Users`, newAuth0User)
 
       return dispatch({type:CREATE_NEW_AUTH0_USER, payload:newAuth0User})
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   }
 }
