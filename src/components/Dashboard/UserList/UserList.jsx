@@ -9,7 +9,7 @@ const UserList = ({users}) => {
                     name={user.name}
                     email={user.email}
                     pedidos={"5"}
-                    isActive={user.is_Active} 
+                    isActive={user.is_active || user.isActive} 
             
                 />
             })}

@@ -12,7 +12,7 @@ const UserTable = () => {
     
     useEffect(()=>{
         let auxAllUsers = []
-        auxAllUsers = [...auxAllUsers,...auth0Users]
+        auxAllUsers = [...auth0Users]
         auxAllUsers = [...auxAllUsers, ...users]
         setAllUsers(auxAllUsers)
     },[])

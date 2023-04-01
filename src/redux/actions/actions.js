@@ -145,8 +145,8 @@ export const saveCarrito = (payload) => {
     console.log({payload: payload});
     try {
       //funciona desde local host
-      await axios.put(`http://localhost:3001/cart/${payload.id}`, payload.cart)
-      // await axios.put(`https://el-bodegon-api-wine.vercel.app/cart/${payload.id}`, payload.cart)
+      // await axios.put(`http://localhost:3001/cart/${payload.id}`, payload.cart)
+      await axios.put(`https://el-bodegon-api-wine.vercel.app/cart/${payload.id}`, payload.cart)
       console.log("funciona");
   } catch (error) {
     console.log(error);
