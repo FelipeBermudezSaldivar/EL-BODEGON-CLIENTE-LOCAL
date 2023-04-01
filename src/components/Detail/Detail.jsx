@@ -34,7 +34,7 @@ const Detail = () => {
     console.log("holaaa")
     console.log(cart)
     console.log(userLogged.sub);
-    dispatch(saveCarrito({ cart, id: userLogged.sub }))
+    dispatch(saveCarrito({ cart, id: userLogged.sub || userLogged._id}))
   }
   return (
     <div className={style.detail}>

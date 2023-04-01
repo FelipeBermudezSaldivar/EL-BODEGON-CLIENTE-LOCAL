@@ -1,25 +1,15 @@
 import * as React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import InputBase from "@mui/material/InputBase";
-// import Badge from '@mui/material/Badge';
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-// import MailIcon from '@mui/icons-material/Mail';
-// import NotificationsIcon from '@mui/icons-material/Notifications';
-import MoreIcon from "@mui/icons-material/MoreVert";
-// import SearchBar from './SearchBar'
-import logoMini from "../../assets/logomini.png";
 import LoginButton from "../LoginComponents/LoginButton/LoginButton";
 import LogoutButton from "../LoginComponents/LogoutButton/LogoutButton";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -207,7 +197,7 @@ export default function PrimarySearchAppBar() {
             </IconButton> */}
 
 
-      {!isAuthenticated ? <Link to='/account/login'><AiOutlineUser className={style.login}/></Link> : <><p>Bienvenido {user.nickname}!</p> <LogoutButton/></> }
+      {!userLogged.name ? <Link to='/account/login'><AiOutlineUser className={style.login}/></Link> : <><p>Bienvenido {userLogged.nickname || userLogged.name}!</p> <LogoutButton/></> }
 
             {/* icono usuario */}
             {!isAuthenticated? "" :

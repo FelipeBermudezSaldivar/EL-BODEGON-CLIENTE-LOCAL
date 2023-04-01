@@ -103,19 +103,19 @@ const LoginPage = () => {
   }
   const handlSubmit = async (e) => {
     e.preventDefault();
-    let resultado = await dispatch(postLogin(input))
-    /*     console.log(resultado.error) */
-    if (resultado.error === "valid email correct password") navigate("/menu")
-    if (resultado.error === "Invalid email") Swal.fire({
+    let resultado = await dispatch(postLogin(input));
+    console.log(resultado);
+    if (resultado.message === "valid email correct password") navigate("/menu")
+    if (resultado === "Invalid email") Swal.fire({
       icon: 'error',
       title: 'El bodegon de Tony',
-      text: resultado.error + ':🚨  try again 🤙🏻',
+      text: resultado + ':🚨  try again 🤙🏻',
       footer: '<a href="">Forgot my email??</a>'
     })
-    if (resultado.error === "Invalid password") Swal.fire({
+    if (resultado === "Invalid password") Swal.fire({
       icon: 'error',
       title: 'El bodegon de Tony',
-      text: resultado.error + ':🚨  try again 🤙🏻',
+      text: resultado + ':🚨  try again 🤙🏻',
       footer: '<a href="">Forgot my password??</a>'
     })
     setinput({

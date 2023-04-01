@@ -15,24 +15,25 @@ import { useEffect, useState } from "react";
 import Switch from "react-switch";
 import Dashboard from "./components/Dashboard/Dashboard";
 import UserTable from "./components/Dashboard/UserTable/UserTable";
-import FoodEditor from "./components/Dashboard/FoodTable/FoodTable";
 import FoodTable from "./components/Dashboard/FoodTable/FoodTable";
 import FoodUpdate from "./components/Dashboard/FoodUpdate/FoodUpdate";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
-import { createAuth0User, getAllDishes, getAuth0User } from "./redux/actions/actions";
+import { createAuth0User, getAllDishes, getAuth0User, setStoragedUser } from "./redux/actions/actions";
 
 
 function App() {
   const {user, isAuthenticated} = useAuth0()
   const dispatch = useDispatch()
 
-  const userLogged = useSelector(state => state.user)
-  const cart = useSelector(state => state.cart)
-  
-  
   useEffect(()=>{
     dispatch(getAllDishes())
+    const localUser = localStorage.getItem('user')
+    const parsedUser = JSON.parse(localUser)
+    if (localUser) {
+      console.log(parsedUser);
+      dispatch(setStoragedUser(parsedUser))
+    }
   },[])
 
   useEffect(() => {
@@ -40,7 +41,7 @@ function App() {
       dispatch(createAuth0User(user));
       setTimeout(() => {
         dispatch(getAuth0User(user))
-      }, 2000);
+      }, 1000);
     }
   }, [isAuthenticated, user, dispatch]);
 
@@ -66,24 +67,6 @@ function App() {
       {/* <button onClick={handleModeChange}>
         {isDarkMode ? 'Desactivar modo oscuro' : 'Activar modo oscuro'}
       </button> */}
-      <Switch
-        onChange={handleSwitchChange}
-        checked={isDarkMode}
-        onColor="#007bff"
-        offColor="#bbb"
-        checkedIcon={false}
-        uncheckedIcon={false}
-        height={20}
-        width={40}
-        onHandleColor="#fff"
-        offHandleColor="#fff"
-        onHandleStyle={{ boxShadow: "none" }}
-        offHandleStyle={{ boxShadow: "none" }}
-        activeBoxShadow="0px 0px 1px 2px rgba(0, 0, 0, 0.2)"
-        aria-label="Switch to toggle between light and dark mode"
-        onLabel="Dark"
-        offLabel="Light"
-      />
       {!location.pathname.includes('dashboard') && <Nav />}
       <Routes>
         <Route path="/" element={<Home />} />

@@ -35,14 +35,9 @@ const Menu = () => {
   }, [totalPrice])
 
   const handleSaveCarrito = (cart) => {
-    //   if(userLogged){
-    // setAux(aux + 1)
     console.log("holaaa")
     console.log(cart)
-    dispatch(saveCarrito({ cart, id: userLogged.sub }))
-    //   } else {
-    //     alert("login")
-    //   }
+    dispatch(saveCarrito({ cart, id: userLogged.sub || userLogged._id}))
   }
     return (
         <div className={style.menu}>

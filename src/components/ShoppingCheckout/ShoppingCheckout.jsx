@@ -24,14 +24,9 @@ const ShoppingCheckout = () => {
       },[totalPrice])
       
       const handleSaveCarrito = (cart) => {
-            //   if(userLogged){
-                // setAux(aux + 1)
-                // console.log(userLogged.sub)
                 console.log(cart)
-                dispatch(saveCarrito({cart, id: userLogged.sub}))
-            //   } else {
-            //     alert("login")
-            //   }
+                dispatch(saveCarrito({cart, id: userLogged.sub || userLogged._id}))
+           
             }
 
     return (

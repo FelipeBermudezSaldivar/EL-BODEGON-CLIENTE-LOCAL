@@ -26,7 +26,7 @@ export const ShoppingCart = () => {
   }, [totalPrice])
 
   const handleSaveCarrito = (cart) => {
-    dispatch(saveCarrito({ cart, id: userLogged.sub }))
+    dispatch(saveCarrito({ cart, id: userLogged.sub || userLogged._id }))
   }
   useEffect(()=>{
     console.log(carrito);

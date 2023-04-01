@@ -20,6 +20,7 @@ import {
     GET_ALL_USERS,
     USER_LOGIN_DATA,
     GET_AUTH0_USERS,
+    SET_STORAGED_USER,
 
 } from '../actions/actions'
 
@@ -33,7 +34,6 @@ const initialState = {
     totalPrice:0,
     user:{},
     adminData:{},
-    userLoginData: "",
 }
 
 
@@ -50,10 +50,19 @@ switch (type) {
         }
 
     case USER_LOGIN_DATA:
+        console.log(payload.cart);
+        console.log(payload.user);
+        localStorage.setItem('user', JSON.stringify(payload.user))
         return {
             ...state,
-            userLoginData: payload
+            user: payload.user,
+            cart: payload.cart
             }
+    
+    case SET_STORAGED_USER:
+        console.log({REDUCER: payload.user});
+        console.log({REDUCER: payload.cart});
+        return {...state, user: payload.user, cart: payload.cart}
 
     case GET_DISHES_BY_NAME:
         return {

@@ -7,7 +7,10 @@ const LogoutButton = () => {
 
   return (
     <div>
-      <button className={style.logout} onClick={logout}>Log Out</button>
+      <button className={style.logout} onClick={()=>{
+        logout();
+        localStorage.removeItem('user')
+        }}>Log Out</button>
       <FiLogOut/>
     </div>
   );
