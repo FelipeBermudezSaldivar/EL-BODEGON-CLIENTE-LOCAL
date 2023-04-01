@@ -38,7 +38,9 @@ function App() {
   useEffect(() => {
     if (isAuthenticated && user) {
       dispatch(createAuth0User(user));
-      dispatch(getAuth0User(user))
+      setTimeout(() => {
+        dispatch(getAuth0User(user))
+      }, 2000);
     }
   }, [isAuthenticated, user, dispatch]);
 
