@@ -170,9 +170,9 @@ export default function PrimarySearchAppBar() {
           </Box>
           <h2 className={style.titleNav}>El Bodegón de Tony</h2>
           {location.pathname === "/menu" && <SearchBar />}
-          <Link to="/dashboard" style={{ textDecoration: 'none' }}>
+         {userLogged.role ? <Link to="/dashboard" style={{ textDecoration: 'none' }}>
             <a class="nav-link active" aria-current="page" className={style.aNav}>Dashboard</a>
-          </Link>
+          </Link> : ""}
 
           <Link to="/menu" style={{ textDecoration: 'none' }}>
             <a class="nav-link active" aria-current="page" className={style.aNav}>Menu</a>

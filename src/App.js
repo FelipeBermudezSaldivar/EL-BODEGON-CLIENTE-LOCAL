@@ -17,13 +17,16 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import UserTable from "./components/Dashboard/UserTable/UserTable";
 import FoodTable from "./components/Dashboard/FoodTable/FoodTable";
 import FoodUpdate from "./components/Dashboard/FoodUpdate/FoodUpdate";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import { createAuth0User, getAllDishes, getAuth0User, setStoragedUser } from "./redux/actions/actions";
 import Nosotros from "./components/Nosotros/Nosotros";
+import ProtectRouter from "./components/ProtectRouter/ProtectRouter";
 
 function App() {
   const {user, isAuthenticated} = useAuth0()
+  const userAdmin = useSelector(state => state.user)
+
   const dispatch = useDispatch()
 
   useEffect(()=>{
@@ -34,6 +37,7 @@ function App() {
       console.log(parsedUser);
       dispatch(setStoragedUser(parsedUser))
     }
+    console.log(userAdmin.role);
   },[])
 
   useEffect(() => {
@@ -76,7 +80,15 @@ function App() {
         <Route path="account" element={<Profile />} />
         <Route path="/cart" element={<ShoppingCart />} />
         <Route path="/user" element={<User />} />
+
         <Route path="/dashboard" element={<Dashboard/>}/>
+        {/* <Route path="/dashboard" element={
+          <ProtectRouter user={userAdmin}>
+            <Dashboard />
+          </ProtectRouter>
+        } /> */}
+
+
         <Route path='/dashboard/users' element={<UserTable/>}/>
         <Route path="/dashboard/foods" element={<FoodTable/>}/>
         <Route path="/dashboard/foods/edit/:id" element={<FoodUpdate/>}/>

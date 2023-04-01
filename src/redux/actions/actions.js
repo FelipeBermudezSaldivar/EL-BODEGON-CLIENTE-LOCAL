@@ -53,7 +53,9 @@ export const postLogin = (payload) => {
   console.log(payload)
   return async function (dispatch) {
     try {
+      
       // let result = await axios.post("https://el-bodegon-api-wine.vercel.app/users/login", payload)
+      console.log(payload);
       let result = await axios.post("http://localhost:3001/users/login", payload);
 
       const carritoId = result.data.user.cart
