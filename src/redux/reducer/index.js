@@ -16,7 +16,6 @@ import {
     REDUCE_TOTAL_PRICE,
     REMOVE_MANY_PRODUCTS,
     GET_AUTH0_USER_BY_ID,
-    SET_SAVED_CARRITO,
     SET_LOCAL_CARRITO,
     GET_ALL_USERS,
     USER_LOGIN_DATA,
@@ -196,9 +195,6 @@ switch (type) {
 
     case CREATE_NEW_AUTH0_USER:
         return {...state}
-
-    case SET_SAVED_CARRITO:
-        return {...state, cart: payload}
 
     case GET_ALL_USERS:
         return {...state, adminData: {...state.adminData, users: payload}}
