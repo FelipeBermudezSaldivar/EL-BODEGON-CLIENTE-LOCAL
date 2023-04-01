@@ -6,7 +6,7 @@ import style from "./Menu.module.css"
 import { useDispatch } from "react-redux"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import { saveCarrito } from "../../redux/actions/actions"
+import { getCategories, saveCarrito } from "../../redux/actions/actions"
 
 
 const Menu = () => {
@@ -27,7 +27,9 @@ const Menu = () => {
   cart.forEach(item => {
     totalPrice += item.price * item.quantity
   });
-
+  useEffect(()=>{
+    dispatch(getCategories())
+  },[])
   useEffect(() => {
     handleSaveCarrito(cart)
     console.log("pasoxuseeffect");

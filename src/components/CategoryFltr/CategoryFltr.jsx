@@ -27,7 +27,7 @@ const CategoryFltr = ({setCurrentPage}) => {
             setCurrentPage(1)
         }
     }
-    
+
     return (
         <div className={style.filter}>
             {categories.map( 
@@ -35,7 +35,9 @@ const CategoryFltr = ({setCurrentPage}) => {
                 <button style = {{ height : '40px', width : '125px', borderRadius: '20px' }}onClick={handleClick} value={category} key={i} className={style.filterButton}>
                     {category}
                 </button> )}
+
         </div>
+   
     )
 }
 

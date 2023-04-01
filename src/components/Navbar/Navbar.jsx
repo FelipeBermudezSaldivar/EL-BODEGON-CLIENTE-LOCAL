@@ -170,8 +170,16 @@ export default function PrimarySearchAppBar() {
           </Box>
           <h2 className={style.titleNav}>El Bodegón de Tony</h2>
           {location.pathname === "/menu" && <SearchBar />}
-          <Link to="/dashboard">
-            <button className={style.create}>Dashboard</button>
+          <Link to="/dashboard" style={{ textDecoration: 'none' }}>
+            <a class="nav-link active" aria-current="page" className={style.aNav}>Dashboard</a>
+          </Link>
+
+          <Link to="/menu" style={{ textDecoration: 'none' }}>
+            <a class="nav-link active" aria-current="page" className={style.aNav}>Menu</a>
+          </Link>
+
+          <Link to="/nosotros" style={{ textDecoration: 'none' }}>
+            <a class="nav-link active" aria-current="page" className={style.aNav}>Nosotros</a>
           </Link>
           {/* Box para ocupar espacio */}
           <Box sx={{ flexGrow: 1 }} />

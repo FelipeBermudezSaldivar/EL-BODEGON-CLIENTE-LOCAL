@@ -20,7 +20,7 @@ import FoodUpdate from "./components/Dashboard/FoodUpdate/FoodUpdate";
 import { useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import { createAuth0User, getAllDishes, getAuth0User, setStoragedUser } from "./redux/actions/actions";
-
+import Nosotros from "./components/Nosotros/Nosotros";
 
 function App() {
   const {user, isAuthenticated} = useAuth0()
@@ -81,6 +81,7 @@ function App() {
         <Route path="/dashboard/foods" element={<FoodTable/>}/>
         <Route path="/dashboard/foods/edit/:id" element={<FoodUpdate/>}/>
         <Route path="/dashboard/foods/create" element={<CreateDishesForm />} />
+        <Route path="/nosotros" element={<Nosotros />} />
       </Routes>
     </div>
   );
