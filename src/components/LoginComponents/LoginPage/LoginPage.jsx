@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { postLogin } from "../../../redux/actions/actions";
 import Swal from "sweetalert2";
+import Footer from "../../Footer/Footer";
 
 const LoginPage = () => {
   const images = [
@@ -228,6 +229,7 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
+      <Footer class="col-12"/>
     </div>
   );
 };
