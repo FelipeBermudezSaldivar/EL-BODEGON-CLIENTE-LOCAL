@@ -39,7 +39,7 @@ export const setStoragedUser = (user) => {
   return async function (dispatch) {
     try {
       console.log(user);
-      const carrito = await axios.get(`http://localhost:3001/cart/${user.cart}`)
+      const carrito = await axios.get(`https://el-bodegon-api-wine.vercel.app/cart/${user.cart}`)
       console.log(carrito.data.items);
 
       dispatch({type: SET_STORAGED_USER, payload: {user, cart: carrito.data.items}})
@@ -56,10 +56,10 @@ export const postLogin = (payload) => {
       
       // let result = await axios.post("https://el-bodegon-api-wine.vercel.app/users/login", payload)
       console.log(payload);
-      let result = await axios.post("http://localhost:3001/users/login", payload);
+      let result = await axios.post("https://el-bodegon-api-wine.vercel.app/users/login", payload);
 
       const carritoId = result.data.user.cart
-      const carrito = await axios.get(`http://localhost:3001/cart/${carritoId}`)
+      const carrito = await axios.get(`https://el-bodegon-api-wine.vercel.app/cart/${carritoId}`)
 
       dispatch({type: USER_LOGIN_DATA, payload: {user: result.data.user, cart: carrito.data.items}})
       return result.data
