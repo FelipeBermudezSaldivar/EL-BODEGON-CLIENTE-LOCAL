@@ -109,7 +109,7 @@ export const createDish = (payload) => {
 
   try {   
     return async function () {
-      await axios.post("http://localhost:3001/foods", payload
+      await axios.post("https://el-bodegon-api-wine.vercel.app/foods", payload
       ,
        {
         headers: {
