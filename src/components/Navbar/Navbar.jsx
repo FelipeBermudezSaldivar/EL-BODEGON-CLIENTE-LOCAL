@@ -16,9 +16,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Link, useFetcher, useLocation } from "react-router-dom";
 import style from "./Navbar.module.css";
 import SearchBar from "./SearchBar";
-import {AiOutlineUser, AiOutlineShoppingCart} from "react-icons/ai"
+import { AiOutlineUser, AiOutlineShoppingCart } from "react-icons/ai"
 import { useState } from "react";
 import El_Bodegon_de_Tony from "../images/El_Bodegon_de_Tony.png"
+import { Nav, NavDropdown } from "react-bootstrap";
 
 
 
@@ -32,11 +33,11 @@ export default function PrimarySearchAppBar() {
   const dispatch = useDispatch()
   const userLogged = useSelector(state => state.user)
   const cart = useSelector(state => state.cart)
-  const [aux, setAux]=useState(0)
-  const location =useLocation()
+  const [aux, setAux] = useState(0)
+  const location = useLocation()
 
 
-  
+
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -159,7 +160,8 @@ export default function PrimarySearchAppBar() {
               padding: "10px"
             }}
           >
-            <Link to="/"><button className={style.buttonLogo}><img src={El_Bodegon_de_Tony} alt="Logo" className={style.logo}/></button></Link>
+
+            <Link to="/"><button className={style.buttonLogo}><img src={El_Bodegon_de_Tony} alt="Logo" className={style.logo} /></button></Link>
             <Typography
               variant="h6"
               noWrap
@@ -170,7 +172,7 @@ export default function PrimarySearchAppBar() {
           </Box>
           <h2 className={style.titleNav}>El Bodegón de Tony</h2>
           {location.pathname === "/menu" && <SearchBar />}
-         {userLogged.role ? <Link to="/dashboard" style={{ textDecoration: 'none' }}>
+          {userLogged.role ? <Link to="/dashboard" style={{ textDecoration: 'none' }}>
             <a class="nav-link active" aria-current="page" className={style.aNav}>Dashboard</a>
           </Link> : ""}
 
@@ -205,13 +207,20 @@ export default function PrimarySearchAppBar() {
             </IconButton> */}
 
 
-      {!userLogged.name ? <Link to='/account/login'><AiOutlineUser className={style.login}/></Link> : <><p>Bienvenido {userLogged.nickname || userLogged.name}!</p> <LogoutButton/></> }
+            <div className={style.userContainer}>
+              {!userLogged.name ? <Link to='/account/login'><AiOutlineUser className={style.login} /></Link>
+                : <><Nav><NavDropdown title={userLogged.name}><NavDropdown.Item><LogoutButton /></NavDropdown.Item></NavDropdown></Nav></>}
+              {/* {!userLogged.name ? <Link to='/account/login'><AiOutlineUser className={style.login} /></Link> : <><p>Bienvenido {userLogged.nickname || userLogged.name}!</p> <LogoutButton /></>}
+ */}
+              {/* icono usuario */}
+              {!isAuthenticated ? "" :
+                <Link to='account'><img className={style.userPicture} src={user.picture} alt={user.name} /></Link>
+              }
+            </div>
+            <div className={style.cartContainer}>
+              <Link to='cart'><AiOutlineShoppingCart className={style.cart} /></Link>
+            </div>
 
-            {/* icono usuario */}
-            {!isAuthenticated? "" :
-            <Link to='account'><img className={style.userPicture} src={user.picture} alt={user.name}/></Link>
-            }
-            <Link to='cart'><AiOutlineShoppingCart className={style.cart}/></Link>
           </Box>
 
           {/* Menu responsive */}
