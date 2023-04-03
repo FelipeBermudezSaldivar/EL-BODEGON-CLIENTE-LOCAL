@@ -130,6 +130,7 @@ function App() {
         <Route path="/dashboard/foods/create" element={<CreateDishesForm />} />
         <Route path="/nosotros" element={<Nosotros />} />
       </Routes>
+      
     </div>
   );
 }

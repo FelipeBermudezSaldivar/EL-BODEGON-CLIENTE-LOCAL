@@ -5,7 +5,7 @@ const VentasItem = ({owner, direccion, items, monto, date}) => {
         <tr >
             <td>{owner}</td>
             <td>{direccion}</td>
-            <td><Link>Ver detalle de compra</Link></td>
+            {/* <td><Link>Ver detalle de compra</Link></td> */}
             <td>$ {monto}</td>
             <td>{date}</td>
         </tr>

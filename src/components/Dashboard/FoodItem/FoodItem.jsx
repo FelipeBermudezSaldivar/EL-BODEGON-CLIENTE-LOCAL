@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import style from '../Table.module.css'
 
 const FoodItem = ({id,description, name,image,category,stock, price}) => {
     return (
@@ -8,7 +9,7 @@ const FoodItem = ({id,description, name,image,category,stock, price}) => {
             <td>USD {price}</td>
             <td>{stock}</td>
             <td>{description}</td>
-            <Link to={`edit/${id}`} ><button>Editar producto</button></Link>
+            <Link to={`edit/${id}`} ><button className={style.button}>Editar producto</button></Link>
         </tr>
     );
 }

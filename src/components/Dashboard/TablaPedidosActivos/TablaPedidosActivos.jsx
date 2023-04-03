@@ -1,7 +1,8 @@
 import PedidoActivo from "./PedidoActivo";
+import style from '../Table.module.css'
 
 const TablaPedidosActivos = ({pedidos}) => {
-    return (<>
+    return (<table>
         <thead>
             <tr>
                 <th>Dirección</th>
@@ -20,7 +21,7 @@ const TablaPedidosActivos = ({pedidos}) => {
                 }
             })}
         </tbody>
-            </>
+            </table>
     );
 }
  
