@@ -24,15 +24,35 @@ import {
   getAllDishes,
   getAuth0User,
   setStoragedUser,
+  removeAllProducts,
+  saveCarrito,
+  compraExitosa,
+  getMyOrders
 } from "./redux/actions/actions";
 import Nosotros from "./components/Nosotros/Nosotros";
+import queryString from 'query-string';
 import ProtectRouter from "./components/ProtectRouter/ProtectRouter";
+import VentasTable from "./components/Dashboard/VentasTotales/VentasTable/VentasTable";
 
 function App() {
   const { user, isAuthenticated } = useAuth0();
-  const userAdmin = useSelector((state) => state.user);
+  const userLogged = useSelector((state) => state.user);
+  const cart = useSelector (state => state.cart)
 
   const dispatch = useDispatch();
+
+  useEffect(()=>{
+    const queries = queryString.parse(location.search);
+    const status = queries.status
+    const {_id, email, sub} = userLogged
+    dispatch(getMyOrders(_id))
+    if(userLogged.email && status === 'approved' ){
+      const vacio = []
+      dispatch(compraExitosa({id: _id, sub, email, cart}))
+      dispatch(removeAllProducts())
+      dispatch(saveCarrito({vacio, id: sub || _id}))
+    }
+  },[userLogged])
 
   useEffect(() => {
     dispatch(getAllDishes());
@@ -42,7 +62,6 @@ function App() {
       console.log(parsedUser);
       dispatch(setStoragedUser(parsedUser));
     }
-    console.log(userAdmin.role);
   }, []);
 
   useEffect(() => {
@@ -103,16 +122,10 @@ function App() {
         <Route path="account" element={<Profile />} />
         <Route path="/cart" element={<ShoppingCart />} />
         <Route path="/user" element={<User />} />
-
         <Route path="/dashboard" element={<Dashboard />} />
-        {/* <Route path="/dashboard" element={
-          <ProtectRouter user={userAdmin}>
-            <Dashboard />
-          </ProtectRouter>
-        } /> */}
-
         <Route path="/dashboard/users" element={<UserTable />} />
         <Route path="/dashboard/foods" element={<FoodTable />} />
+        <Route path='/dashboard/sales' element={<VentasTable/>}/>
         <Route path="/dashboard/foods/edit/:id" element={<FoodUpdate />} />
         <Route path="/dashboard/foods/create" element={<CreateDishesForm />} />
         <Route path="/nosotros" element={<Nosotros />} />

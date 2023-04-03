@@ -150,7 +150,7 @@ const Home = () => {
       <div class="col-sm-6 mx-auto text-center ">
         
           
-          <Carrousel_Bootstrap/>
+      <Carrousel_Bootstrap/>
         
       </div>
 
