@@ -1,6 +1,7 @@
 import facebook from "../images/facebook.png";
 import google from "../images/google.png";
-import Git from "../images/Git.png";
+//import Git from "../images/Git.png";
+import Twitter from "../images/Twitter.png"
 import Instagram from "../images/Instagram.png";
 import style from "./Footer.module.css";
 import { Link } from "react-router-dom";
@@ -8,15 +9,15 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div class="container col-12">
+    <div class="container col-12 text-reset">
       <div class="col-12">
         {/* Footer */}
-        <footer class="text-center text-lg-start bg-white text-muted">
+        <footer class="text-center text-lg-start text-muted">
           {/* Section: Social media */}
           <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
             {/* Left */}
-            <div class="me-5 d-none d-lg-block">
-              <span>VISITA NUESTRAS REDES SOCIALES:</span>
+            <div class="me-5 text-reset d-none d-lg-block">
+              <span className={style.titulos}>VISITA NUESTRAS REDES SOCIALES:</span>
             </div>
             {/* Left */}
 
@@ -45,7 +46,7 @@ const Footer = () => {
               </a>
               <a href="#" class="me-4 link-secondary">
                 <i class="fab fa-github">
-                  <img src={Git} alt="facebook" width="27px" />
+                  <img src={Twitter} alt="facebook" width="27px" />
                 </i>
               </a>
             </div>
@@ -61,11 +62,11 @@ const Footer = () => {
                 {/* Grid column */}
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                   {/* Content */}
-                  <h6 class="text-uppercase fw-bold mb-4">
-                    <i class="fas fa-gem me-3 text-secondary"></i>El Bodegón de
+                  <h6 className={style.titulos}>
+                    <i class="fas fa-gem me-3 text-reset"></i>El Bodegón de
                     Tony
                   </h6>
-                  <p className={style.descrip_footer}>
+                  <p className={style.descrip_footer} >
                     Nuestro restaurante ofrece una experiencia culinaria única y
                     memorable, disfrute de nuestra amplia selección de platos
                     exquisitos para todos los gustos.
@@ -76,39 +77,39 @@ const Footer = () => {
                 {/* Grid column */}
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                   {/* Links */}
-                  <h6 class="text-uppercase fw-bold mb-4">Categorias</h6>
-                  <p>Asados</p>
-                  <p>Pizzas</p>
-                  <p>Postres</p>
-                  <p>Pizzas</p>
-                  <p>¡Y MUCHO MAS!</p>
+                  <h6 className={style.titulos}>Categorias</h6>
+                  <p className={style.reseñas_foot}>Asados</p>
+                  <p className={style.reseñas_foot}>Pizzas</p>
+                  <p className={style.reseñas_foot}>Postres</p>
+                  <p className={style.reseñas_foot}>Pizzas</p>
+                  <p className={style.reseñas_foot}>¡Y MUCHO MAS!</p>
                 </div>
                 {/* Grid column */}
 
                 {/* Grid column */}
-                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 ">
                   {/* Links */}
-                  <h6 class="text-uppercase fw-bold mb-4">
+                  <h6 className={style.titulos} >
                     Enlaces Frecuentes
                   </h6>
-                  <p>
+                  <p className={style.reseñas_foot}>
                     {/* <a href="#!" class="text-reset"> */}
-                    <Link to={"/"} class="text-reset">
+                    <Link to={"/"} class="text-reset text-decoration-none pt-4 mt-4">
                       Inicio
                     </Link>
                   </p>
-                  <p>
-                    <Link to={"/nosotros"} class="text-reset">
+                  <p className={style.reseñas_foot}>
+                    <Link to={"/nosotros"} class="text-reset text-decoration-none">
                       Sobre Nosotros
                     </Link>
                   </p>
-                  <p>
-                    <Link to={"/menu"} class="text-reset">
+                  <p className={style.reseñas_foot}>
+                    <Link to={"/menu"} class="text-reset text-decoration-none">
                       Menú
                     </Link>
                   </p>
-                  <p>
-                    <Link to={"/account/login"} class="text-reset">
+                  <p className={style.reseñas_foot}>
+                    <Link to={"/account/login"} class="text-reset text-decoration-none">
                       Login
                     </Link>
                   </p>
@@ -118,23 +119,23 @@ const Footer = () => {
                 {/* Grid column */}
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                   {/* Links */}
-                  <h6 class="text-uppercase fw-bold mb-4">Contactanos</h6>
-                  <p>
+                  <h6 className={style.titulos}>Contactanos</h6>
+                  <p  className={style.reseñas_foot_City}>
                     <i class="fas fa-home me-3 text-secondary"></i> Buenos Aires
                   </p>
-                  <p>
+                  <p className={style.reseñas_foot}>
                     <i class="fas fa-envelope me-3 text-secondary"></i>
                     elbodegon@gmail.com
                   </p>
-                  <p>
+                  <p className={style.reseñas_foot}>
                     <i class="fas fa-phone me-3 text-secondary"></i> + 54 914
                     567 88
                   </p>
-                  <p>
+                  <p className={style.reseñas_foot}>
                     <i class="fas fa-print me-3 text-secondary"></i> + 57 310
                     567 89
                   </p>
-                  <p>
+                  <p className={style.reseñas_foot}>
                     <i class="fas fa-print me-3 text-secondary"></i> + 51 927
                     567 89
                   </p>
