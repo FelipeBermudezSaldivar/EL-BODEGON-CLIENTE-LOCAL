@@ -201,9 +201,16 @@ h4 {
     margin-top: -96px;
 }
 
+<<<<<<< HEAD
 .footer {
     grid-area: footer;
 }
+=======
+.footer{
+    width: 100%;
+}
+
+>>>>>>> 360107f46b996513162844ec944d4faa181a64e2
 
 .home1 {
     margin-top: 2% !important;

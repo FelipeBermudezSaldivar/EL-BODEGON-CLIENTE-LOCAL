@@ -14,6 +14,8 @@ export const CREATE_PAYMENT = 'CREATE_PAYMENT'
 export const CREATE_NEW_AUTH0_USER = 'CREATE_NEW_AUTH0_USER'
 export const GET_AUTH0_USER_BY_ID = 'GET_AUTH0_USER_BY_ID'
 export const GET_AUTH0_USERS = 'GET_AUTH0_USERS'
+export const BAN_USER = 'BAN_USER'
+export const UNBAN_USER = 'UNBAN_USER'
 // 
 export const ADD_PRODUCT = 'ADD_PRODUCT'
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
@@ -29,11 +31,26 @@ export const SAVE_CARRITO = 'SAVE_CARRITO'
 export const SET_LOCAL_CARRITO = 'SET_LOCAL_CARRITO'
 export const CREATE_USER = "CREATE_USER"
 //DASHBOARD
+export const GET_ALL_ORDERS = 'GET_ALL_ORDERS'
 export const GET_ALL_USERS = 'GET_ALL_USERS'
 
+//login
 export const USER_LOGIN_DATA = "USER_LOGIN_DATA"
 export const SET_STORAGED_USER = 'SET_STORAGED_USER'
-//login
+export const COMPRA_EXITOSA = 'COMPRA_EXITOSA'
+export const GET_MY_ORDERS = 'GET_MY_ORDERS'
+
+export const compraExitosa = (data) => {
+  return async function (dispatch) {
+    try {
+      console.log(data);
+      const res = await axios.post("http://localhost:3001/notificar", data)
+      // console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
 
 export const setStoragedUser = (user) => {
   return async function (dispatch) {
@@ -160,7 +177,8 @@ export const saveCarrito = (payload) => {
 export const createPayment = (payload) => {
   try {
       return async function () {            
-        await axios.post('https://el-bodegon-api-wine.vercel.app/payment', payload)       
+        console.log(payload);
+        await axios.post('http://localhost:3001/payment', payload)       
         // await axios.post('https://el-bodegon-api-wine.vercel.app/payment', payload)       
         .then((res)=>window.location.href= res.data.response.body.init_point)
       }
@@ -237,13 +255,29 @@ export function createAuth0User (user) {
     try {
       const {name, nickname, email, sub} = user;
       const newAuth0User = {name, nickname, email, sub}
-      // const newUser = await axios.post(`http://localhost:3001/auth0Users`, newAuth0User)
-      const newUser = await axios.post(`https://el-bodegon-api-wine.vercel.app/auth0Users`, newAuth0User)
+      const newUser = await axios.post(`http://localhost:3001/auth0Users`, newAuth0User)
+      // const newUser = await axios.post(`https://el-bodegon-api-wine.vercel.app/auth0Users`, newAuth0User)
       console.log({NUEVOUSUARIO: newUser.data});
     } catch (error) {
       console.log({errorCreacion: error.message});
     }
   }
+}
+
+export const banUser = (id) => {
+  return async dispatch => {
+    console.log(id);
+    const bannedUser = await axios.put(`http://localhost:3001/auth0Users/ban/${id}`)
+    console.log(bannedUser);
+  }
+}
+
+export const unbanUser = (id) => {
+  return async dispatch => {
+    console.log(id);
+    const unbannedUser = await axios.put(`http://localhost:3001/auth0Users/unban/${id}`)
+    console.log(unbannedUser);
+  } 
 }
 
 export function setLocalCarrito (carrito) {
@@ -294,6 +328,42 @@ export function getAllUsers () {
     try {
       const users = await axios.get(`https://el-bodegon-api-wine.vercel.app/users`);       
       return dispatch({type: GET_ALL_USERS, payload: users.data})
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+
+export function getMyOrders(id) {
+  return async dispatch => {
+  try {
+    const myOrders = await axios.get(`http://localhost:3001/order/${id}`)
+  
+    console.log({MISORDENES: myOrders.data});
+    return dispatch({type: GET_MY_ORDERS, payload: myOrders.data})
+    
+  } catch (error) {
+    console.log(error);
+  }
+  }
+}
+
+export function getAllOrders() {
+  return async dispatch => {
+    try {
+      const allOrders = await axios.get(`http://localhost:3001/order`)
+      return dispatch({type: GET_ALL_ORDERS, payload: allOrders.data})
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+
+export const orderDelivered = (id) => {
+  return async dispatch => {
+    try {
+      const res = await axios.put(`http://localhost:3001/order/${id}`)
+      console.log(res);
     } catch (error) {
       console.log(error);
     }

@@ -1,5 +1,7 @@
 import Luis from "../images/Luis.jpg";
 import Feli from "../images/Feli.jpg";
+import lauty from "../images/lauty.jpg";
+import Nico from "../images/Nico.jpg";
 import Login from "../images/Login.png";
 import style from "./Nosotros.module.css";
 import React from "react";
@@ -11,8 +13,8 @@ const Nosotros = () => {
       <div class="row justify-content-start ">
         <div class="col-5">
           <h1 class="text-center">Sobre Nosotros</h1>
-          <p class="text-start">
-            El equipo de trabajo de un restaurante en línea también es
+          <p class="text-start" className={style.nosotros}>
+            {/* El equipo de trabajo de un restaurante en línea también es
             fundamental para el éxito del negocio. Este equipo se enfoca en
             brindar una experiencia de comida en línea excepcional para los
             clientes. Suele estar compuesto por diferentes roles, como el
@@ -31,7 +33,13 @@ const Nosotros = () => {
             restaurante en línea y aumentar su alcance. En conjunto, el equipo
             de trabajo de un restaurante en línea debe trabajar de manera
             coordinada para garantizar que los clientes tengan una experiencia
-            gastronómica en línea excepcional.
+            gastronómica en línea excepcional. */}
+            Somos estudiantes de Henry donde nos enfocamos en brindar una
+            experiencia de comida en línea excepcional para los clientes, nos
+            encargamos de mantener el sitio web, asegurandonos de que funcione
+            correctamente y que el cliente tenga la mejor experiencia de
+            usuario, ademas hacemos lo posible para que el usuario tenga mucha
+            mas comodidad de poder elegir y pagar su comida favorita
           </p>
         </div>
         <div class="col-7">
@@ -78,7 +86,7 @@ const Nosotros = () => {
             </div>
 
             <div class="col-6">
-              <img src={Login} alt="" width="150px" class="rounded-circle" />
+              <img src={lauty} alt="" width="150px" class="rounded-circle" />
               <p>
                 LAUTARO <br />
                 <a class="text-decoration-none text-reset" href="#">
@@ -88,10 +96,13 @@ const Nosotros = () => {
             </div>
 
             <div class="col-12">
-              <img src={Login} alt="" width="150px" class="rounded-circle" />
+              <img src={Nico} alt="" width="150px" class="rounded-circle" />
               <p>
                 NICOLAS <br />
-                <a class="text-decoration-none text-reset" href="#">
+                <a
+                  class="text-decoration-none text-reset"
+                  href="https://www.linkedin.com/in/nicolas-gonz%C3%A1lez-rodr%C3%ADguez-318880253/"
+                >
                   LinkedIn
                 </a>
               </p>
@@ -99,7 +110,7 @@ const Nosotros = () => {
           </div>
         </div>
       </div>
-        <Footer/>
+      <Footer />
     </div>
   );
 };
