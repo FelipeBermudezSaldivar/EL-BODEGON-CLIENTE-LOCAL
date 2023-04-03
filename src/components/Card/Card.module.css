@@ -1,15 +1,23 @@
-.card {
-  border: 10px solid rgb(235, 14, 14);
-  width: 250px;
-  height: 409px;
-  border-radius: 20px;
-  /* background-color: #fffbde; */
-  margin: 24px;
-  transition: transform 0.5s ease;
-  background-color: aliceblue;
+.cardContainer{
+  max-width: 1200px;
+  height: 430px;
   display: flex;
-  flex-direction: column;
-  margin-bottom: -8%;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+
+}
+
+.card {
+  width: 330px;
+  height: 430px;
+  border-radius: 8px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  margin: 15px;
+  text-align: center;
+  transition: all 0.25s;
+
 }
 
 .card:hover {
@@ -17,8 +25,9 @@
 }
 
 .card_image {
-  width: 136px;
-  height: 122px;
+  width: 330px;
+  height: 220px;
+  border-radius: 8%;
 }
 
 .añadir {
@@ -29,4 +38,13 @@
 
 .añadir:hover {
   background-color: #cecece;
+}
+
+.text{
+  text-align: center;
+  font-size: 32px;
+  color: #220707;
+  text-decoration: none!important;
+  font-family: 'Nunito';
+  margin: 10px
 }
