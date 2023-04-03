@@ -5,6 +5,7 @@ import { addProduct, addTotalPrice, reduceTotalPrice, removeProduct, removeManyP
 import HandlerShoppingItems from "../HandlerShoppingItems/HandlerShoppingItems";
 import { useState } from "react";
 
+
 /* felipe */
 import Model from '../Detail/ModelDetail/modelDetail'
 
@@ -21,20 +22,22 @@ const Card = ({ image, name, id, price, rating, _quantity, stock, aux, setAux, i
   }
   return (
     <>
+    <div className={style.cardContainer}>
       <div className={style.card}>
-        <Link className="text-center text-info mt-3" to={`/detail/${id}`}>
-          <h5 style={{ fontWeight: 'bold', margin: '10px' }} >{name}</h5>
+        <Link class="text-decoration-none" to={`/detail/${id}`}>
+          <h2 className={style.text}>{name}</h2>
         </Link>
         <Link to={`/detail/${id}`}>
           <img src={image} alt={name} className={style.card_image} />
         </Link>
         <p style={{ margin: '10px' }} >Price: {price} USD</p>
-        <button type="button" class="btn btn-danger"
+{/*         <p>Rating {rating}</p>
+ */}        <HandlerShoppingItems dish={item} aux={aux} setAux={setAux} id={id} />
+         <button type="button" class="btn btn-danger w-75 mx-auto" 
           onClick={() => getData(id)}
         >View details food
         </button>
-        <p>Rating {rating}</p>
-        <HandlerShoppingItems dish={item} aux={aux} setAux={setAux} id={id} />
+
       </div>
       {
         model === true ? <Model
@@ -42,8 +45,10 @@ const Card = ({ image, name, id, price, rating, _quantity, stock, aux, setAux, i
           hide={() => setModel(false)}
         /> : ''
       }
+    </div>
     </>
   );
+  
 };
 
 
