@@ -113,7 +113,7 @@ const User = () => {
 
     try {
       if (Object.keys(errors).length === 0) {
-        await axios.post("http://localhost:3001/users/create", datosUsuario)
+        await axios.post("https://el-bodegon-api-wine.vercel.app/users/create", datosUsuario)
         Swal.fire({
           position: 'center',
           icon: 'success',
