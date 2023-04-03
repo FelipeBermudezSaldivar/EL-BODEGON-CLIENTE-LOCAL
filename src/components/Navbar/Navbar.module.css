@@ -27,9 +27,9 @@
 }
 
 .Navbar {
-  background-color: white;
-  margin-bottom: 3%;
-  height: 12%;
+  margin-bottom: 0.3%;
+  background-color: white!important;
+  height: 14%!important;
 }
 
 .titleNav {
