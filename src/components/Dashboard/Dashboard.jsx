@@ -11,13 +11,14 @@ import GraficoBarras from "./GraficoBarras/GraficoBarras";
 import GraficoTorta from "./GraficoTorta/GraficoTorta";
 import { Link } from "react-router-dom";
 import TablaPedidosActivos from "./TablaPedidosActivos/TablaPedidosActivos";
+import { all } from "axios";
 
 
 const Dashboard = () => {
-    // const users = useSelector(state => state.adminData.users)
-    // const auth0Users = useSelector(state => state.adminData.auth0Users)
-    // const [allUsers, setAllUsers] = useState([])
-    // const [cantidadUsuarios, setCantidadUsuarios] = useState(0)
+    const users = useSelector(state => state.adminData.users)
+    const auth0Users = useSelector(state => state.adminData.auth0Users)
+    const [allUsers, setAllUsers] = useState([])
+    const [cantidadUsuarios, setCantidadUsuarios] = useState(0)
     const pedidos = useSelector(state => state.adminData.orders)
     const productos = useSelector(state => state.allDishes)
     const dispatch = useDispatch()
@@ -27,7 +28,7 @@ const Dashboard = () => {
         dispatch(getAllDishes())
         dispatch(getAllOrders())
         console.log("traigousuarios");
-    },[])
+      },[])
 
   return (
     <Container fluid className={style.container_dash}>
@@ -61,8 +62,8 @@ const Dashboard = () => {
             <Link to ="/dashboard/users">
               <Card>
                 <Card.Body>
-                  <Card.Title>Ver </Card.Title>
-                  <Card.Text>usuarios</Card.Text>
+                  <Card.Title>Ver usuarios </Card.Title>
+                  <Card.Text>{users?.length + auth0Users?.length}</Card.Text>
                 </Card.Body>
               </Card>
               </Link>
@@ -73,8 +74,8 @@ const Dashboard = () => {
               <Card>
                 <Card.Body>
                   <Card.Title>Chart</Card.Title>
-                  <div style={{ height: '300px' }}>
-                    <GraficoTorta/>
+                  <div style={{ height: '400px' }}>
+                    <GraficoTorta pedidos={pedidos}/>
                   </div>
                 </Card.Body>
               </Card>
@@ -83,7 +84,7 @@ const Dashboard = () => {
               <Card>
                 <Card.Body>
                   <Card.Title>Pedidos activos</Card.Title>
-                  <div style={{ height: '300px', overflowY: 'scroll' }}>
+                  <div style={{ height: '400px', overflowY: 'scroll' }}>
                     <Table striped bordered>
                       <TablaPedidosActivos pedidos={pedidos}/>
                     </Table>
