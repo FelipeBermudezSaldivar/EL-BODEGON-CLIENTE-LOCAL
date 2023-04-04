@@ -72,7 +72,7 @@ const Nosotros = () => {
             </div>
 
             <div class="col-6">
-              <img src={Login} alt="" width="150px" class="rounded-circle" />
+              <img src={Login} alt="" width="150px" class="rounded-circle" style={{width:"11rem", height:"11rem"}}/>
               <p>
                 JULIAN
                 <br />
@@ -86,17 +86,17 @@ const Nosotros = () => {
             </div>
 
             <div class="col-6">
-              <img src={lauty} alt="" width="150px" class="rounded-circle" />
+              <img src={lauty} alt="" width="150px" class="rounded-circle" style={{width:"11rem", height:"11rem"}} />
               <p>
                 LAUTARO <br />
-                <a class="text-decoration-none text-reset" href="#">
+                <a class="text-decoration-none text-reset" href="https://www.linkedin.com/in/lautaro-far%C3%ADas-5b3314262/">
                   LinkedIn
                 </a>
               </p>
             </div>
 
             <div class="col-12">
-              <img src={Nico} alt="" width="150px" class="rounded-circle" />
+              <img src={Nico} alt="" width="150px" class="rounded-circle" style={{width:"11rem", height:"11rem"}} />
               <p>
                 NICOLAS <br />
                 <a
