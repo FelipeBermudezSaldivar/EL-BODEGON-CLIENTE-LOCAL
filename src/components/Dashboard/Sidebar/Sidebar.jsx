@@ -14,8 +14,10 @@ import {
 } from "react-icons/fa";
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Sidebar = () => {
+  const admin = useSelector(state =>state.user)
   const menuItem = [
     {
       path: "/dashboard",
@@ -77,7 +79,7 @@ const Sidebar = () => {
       <div className="containerSidebar">
         <div style={{ width: isOpen ? "100%" : "50px" }} className="sidebarSidebar">
           <div className="top_section">
-            <h1 style={{ display: isOpen ? "block" : "none" }} className="log">Logo</h1>
+            <h1 style={{ display: "block", fontSize: "30px"}} className="log">{"Bienvenido!"}</h1>
             <div style={{ marginLeft: isOpen ? "20px" : "-6px" }} className="bars">
               {/* <FaBars onClick={toggle} /> */}
             </div>
