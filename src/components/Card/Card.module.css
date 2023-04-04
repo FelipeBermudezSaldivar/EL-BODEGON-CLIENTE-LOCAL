@@ -43,7 +43,8 @@
 .text{
   text-align: center;
   font-size: 32px;
-  color: #220707;
+  color: #e77200;
+  font-weight: bold;
   text-decoration: none!important;
   font-family: 'Nunito';
   margin: 10px

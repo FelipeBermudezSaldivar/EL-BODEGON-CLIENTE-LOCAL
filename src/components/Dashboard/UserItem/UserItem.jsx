@@ -31,7 +31,7 @@ const UserItem = ({id, name,email,pedidos,isActive, sub}) => {
             <td>{id}</td>
             <td>{name}</td>
             <td>{email}</td>
-            <td>{pedidos.length}</td>
+            <td>{pedidos?.length}</td>
             <td>{status ? "Activo"  : "Inactivo"}</td>
             {status 
             ? <button onClick={handleClick}>desactivar usuario</button> 
