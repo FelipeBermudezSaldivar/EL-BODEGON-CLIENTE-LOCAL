@@ -21,21 +21,18 @@ const Card = ({ image, name, id, price, rating, _quantity, stock, aux, setAux, i
 
   }
   return (
-    <>
     <div className={style.cardContainer}>
       <div className={style.card}>
-        <Link class="text-decoration-none" to={`/detail/${id}`}>
           <h2 className={style.text}>{name}</h2>
-        </Link>
         <Link to={`/detail/${id}`}>
           <img src={image} alt={name} className={style.card_image} />
         </Link>
-        <p style={{ margin: '10px' }} >Price: {price} USD</p>
-{/*         <p>Rating {rating}</p>
- */}        <HandlerShoppingItems dish={item} aux={aux} setAux={setAux} id={id} />
-         <button type="button" class="btn btn-danger w-75 mx-auto" 
+        <p style={{ margin: '10px' }} >Precio: {price} USD</p>
+        {/*         <p>Rating {rating}</p>
+       */}<HandlerShoppingItems dish={item} aux={aux} setAux={setAux} id={id} />
+         <button class="btn btn-warning w-75 mx-auto" type="button"  
           onClick={() => getData(id)}
-        >View details food
+        >Ver detalles
         </button>
 
       </div>
@@ -46,7 +43,7 @@ const Card = ({ image, name, id, price, rating, _quantity, stock, aux, setAux, i
         /> : ''
       }
     </div>
-    </>
+    
   );
   
 };

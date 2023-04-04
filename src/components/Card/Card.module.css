@@ -4,7 +4,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: auto;
+  margin-bottom: 5%;
 
 }
 
@@ -17,6 +17,8 @@
   margin: 15px;
   text-align: center;
   transition: all 0.25s;
+  color: rgb(21, 57, 135);
+
 
 }
 
@@ -43,8 +45,13 @@
 .text{
   text-align: center;
   font-size: 32px;
-  color: #220707;
+  color: rgb(21, 57, 135);
   text-decoration: none!important;
   font-family: 'Nunito';
   margin: 10px
+
+}
+
+.button{
+  background-color:#e77200!important;
 }
