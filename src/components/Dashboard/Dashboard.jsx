@@ -39,7 +39,7 @@ const Dashboard = () => {
         <Col sm={10}>
           <Row className="my-3">
             <Col md={4}>
-              <Link to = '/dashboard/sales'>
+              <Link to = '/dashboard/sales' style={{textDecoration: "none"}}>
               <Card>
                 <Card.Body>
                   <Card.Title>Ventas totales</Card.Title>
@@ -49,7 +49,7 @@ const Dashboard = () => {
               </Link>
             </Col>
             <Col md={4}>
-              <Link to ="/dashboard/foods">
+              <Link to ="/dashboard/foods" style={{textDecoration: "none"}}>
               <Card>
                 <Card.Body>
                   <Card.Title>Productos</Card.Title>
@@ -59,7 +59,7 @@ const Dashboard = () => {
               </Link>
             </Col>
             <Col md={4}>
-            <Link to ="/dashboard/users">
+            <Link to ="/dashboard/users" style={{textDecoration: "none"}}>
               <Card>
                 <Card.Body>
                   <Card.Title>Ver usuarios </Card.Title>

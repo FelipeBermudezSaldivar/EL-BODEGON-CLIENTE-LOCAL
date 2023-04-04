@@ -29,44 +29,19 @@ const Sidebar = () => {
       name: "Home",
       icon: <FaHome/>
     },
-    // {
-    //   path: "/dashboard/about",
-    //   name: "About",
-    //   icon: <FaLeaf />
-    // },
-    // {
-    //   path: "/dashboard/analytics",
-    //   name: "Analytics",
-    //   icon: <FaRegChartBar />
-    // },
-    // {
-    //   path: "/dashboard/comment",
-    //   name: "Comment",
-    //   icon: <FaCommentAlt />
-    // },
-    // {
-    //   path: "/dashboard/product",
-    //   name: "Product",
-    //   icon: <FaShoppingBag />
-    // },
-    // {
-    //   path: "/dashboard/productlist",
-    //   name: "Product List",
-    //   icon: <FaRegListAlt />
-    // },
     {
       path: "/dashboard/foods",
-      name: "Menu foods",
+      name: "Comidas",
       icon: <FaMitten />
     },
     {
       path: "/dashboard/users",
-      name: "Users",
+      name: "Usuarios",
       icon: <FaUser />
     },
     {
       path: "/dashboard/sales",
-      name: "Orders",
+      name: "Pedidos",
       icon: <FaShoppingBasket />
     }
 
