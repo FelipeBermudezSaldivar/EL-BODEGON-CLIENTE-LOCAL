@@ -2,10 +2,12 @@ import Luis from "../images/Luis.jpg";
 import Feli from "../images/Feli.jpg";
 import lauty from "../images/lauty.jpg";
 import Nico from "../images/Nico.jpg";
+import juli from "../images/juli.jpg"
 import Login from "../images/Login.png";
 import style from "./Nosotros.module.css";
 import React from "react";
 import Footer from "../Footer/Footer";
+import { SignalWifiStatusbarConnectedNoInternet4Sharp } from "@mui/icons-material";
 
 const Nosotros = () => {
   return (
@@ -46,7 +48,7 @@ const Nosotros = () => {
           <h2 className={style.equipo}>Equipo</h2>
           <div class="row justify-content-start">
             <div class="col-6">
-              <img src={Luis} alt="" width="150px" class="rounded-circle" />
+              <img src={Luis} alt="" style={{width : "10rem", height:"10rem"}} class="rounded-circle" />
               <p>
                 LUIS <br />
                 <a
@@ -59,7 +61,7 @@ const Nosotros = () => {
             </div>
 
             <div class="col-6">
-              <img src={Feli} alt="" width="150px" class="rounded-circle" />
+              <img src={Feli} style={{width : "10rem", height:"10rem"}} alt="" class="rounded-circle" />
               <p>
                 FELIPE <br />
                 <a
@@ -72,7 +74,7 @@ const Nosotros = () => {
             </div>
 
             <div class="col-6">
-              <img src={Login} alt="" width="150px" class="rounded-circle" />
+              <img src={juli} style={{width : "10rem", height:"10rem"}} alt=""  class="rounded-circle" />
               <p>
                 JULIAN
                 <br />
@@ -86,7 +88,7 @@ const Nosotros = () => {
             </div>
 
             <div class="col-6">
-              <img src={lauty} alt="" width="150px" class="rounded-circle" />
+              <img src={lauty} style={{width : "10rem", height:"10rem"}} alt=""  class="rounded-circle" />
               <p>
                 LAUTARO <br />
                 <a class="text-decoration-none text-reset" href="#">
@@ -96,7 +98,7 @@ const Nosotros = () => {
             </div>
 
             <div class="col-12">
-              <img src={Nico} alt="" width="150px" class="rounded-circle" />
+              <img src={Nico} style={{width : "10rem", height:"10rem"}} alt=""  class="rounded-circle" />
               <p>
                 NICOLAS <br />
                 <a

@@ -1,4 +1,5 @@
 import Carousel from 'react-bootstrap/Carousel';
+import style from "./Carrousel_Bootstrap.module.css"
 
 function Carrousel_Bootstrap() {
   return (
@@ -10,8 +11,8 @@ function Carrousel_Bootstrap() {
           alt="First slide"
         />
         <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3 className={style.plato_description}>Estofado</h3>
+          
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -23,8 +24,8 @@ function Carrousel_Bootstrap() {
         />
 
         <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h3 className={style.plato_description}>Galletas de requesón</h3>
+          
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -35,10 +36,8 @@ function Carrousel_Bootstrap() {
         />
 
         <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+          <h3 className={style.plato_description}>Pizza de Brocoli</h3>
+          
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -48,8 +47,8 @@ function Carrousel_Bootstrap() {
           alt="First slide"
         />
         <Carousel.Caption>
-          <h3>Cuatro slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3 className={style.plato_description}>Hamburguesa de Carne con Queso</h3>
+          
         </Carousel.Caption>
       </Carousel.Item>
 
@@ -60,8 +59,8 @@ function Carrousel_Bootstrap() {
           alt="First slide"
         />
         <Carousel.Caption>
-          <h3>Cinco slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3 className={style.plato_description}>Pastel de galleta y chocolate</h3>
+          
         </Carousel.Caption>
       </Carousel.Item>
 
@@ -72,20 +71,20 @@ function Carrousel_Bootstrap() {
           alt="First slide"
         />
         <Carousel.Caption>
-          <h3>Seis slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3 className={style.plato_description}>Bife de chorizo</h3>
+          
         </Carousel.Caption>
       </Carousel.Item>
 
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://res.cloudinary.com/dpbrs6n4j/image/upload/v1679776906/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/Comida-francesa_q2m7gt.jpg"
+          src="https://res.cloudinary.com/dpbrs6n4j/image/upload/v1680626850/Fotos/Imagenes%20para%20subir%20a%20Cloudinary/Comida_ccdt4z.jpg"
           alt="First slide"
         />
         <Carousel.Caption>
-          <h3>Siete slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3 className={style.plato_description}>Sushi</h3>
+         
         </Carousel.Caption>
       </Carousel.Item>
 
@@ -96,8 +95,8 @@ function Carrousel_Bootstrap() {
           alt="First slide"
         />
         <Carousel.Caption>
-          <h3>Ocho slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3 className={style.plato_description}>Ratatouille o Confit Byaldi</h3>
+          
         </Carousel.Caption>
       </Carousel.Item>
 
@@ -108,8 +107,8 @@ function Carrousel_Bootstrap() {
           alt="First slide"
         />
         <Carousel.Caption>
-          <h3>Nueve slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3 className={style.plato_description}>Croquetas de espinaca</h3>
+          
         </Carousel.Caption>
       </Carousel.Item>
 
@@ -120,8 +119,8 @@ function Carrousel_Bootstrap() {
           alt="First slide"
         />
         <Carousel.Caption>
-          <h3>Diez slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3 className={style.plato_description}>tortilla de patatas</h3>
+         
         </Carousel.Caption>
       </Carousel.Item>
 

@@ -1,13 +1,14 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import FoodContainer from "../FoodContainer/FoodContainer";
+import style from "./FoodTable.module.css"
 
 
 const FoodTable = () => {
     const foods = useSelector(state => state.allDishes)
 
     return (
-        <div>
+        <div className={style.dashborard_food}>
             <Link to="/dashboard">
                 <button>Volver</button>
             </Link>
