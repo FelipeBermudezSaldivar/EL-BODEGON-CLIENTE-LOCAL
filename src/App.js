@@ -97,7 +97,7 @@ function App() {
         location.pathname !== "/dashboard/foods" &&
         location.pathname !== "/dashboard/sales" &&
         location.pathname !== "/dashboard/foods/edit/:id"  &&
-        location.pathname !== "/dashboard/foods/create" && (
+        (
           <Switch
             onChange={handleSwitchChange}
             checked={isDarkMode}

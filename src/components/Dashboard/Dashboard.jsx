@@ -31,7 +31,7 @@ const Dashboard = () => {
       },[])
 
   return (
-    <Container fluid>
+    <Container fluid className={style.container_dash}>
       <Row>
         <Col sm={2} className="bg-light">
           <Sidebar/>
