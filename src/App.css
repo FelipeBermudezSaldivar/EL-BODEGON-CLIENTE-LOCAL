@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+
+.react-switch-bg{
+  top: 42px;
+  z-index: 10;
+}
+
+.react-switch-handle{
+  z-index: 10;
+  top: 43px !important;
+}

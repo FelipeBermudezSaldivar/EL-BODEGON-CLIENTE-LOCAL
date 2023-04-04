@@ -27,32 +27,32 @@ import {
   removeAllProducts,
   saveCarrito,
   compraExitosa,
-  getMyOrders
+  getMyOrders,
 } from "./redux/actions/actions";
 import Nosotros from "./components/Nosotros/Nosotros";
-import queryString from 'query-string';
+import queryString from "query-string";
 import ProtectRouter from "./components/ProtectRouter/ProtectRouter";
 import VentasTable from "./components/Dashboard/VentasTotales/VentasTable/VentasTable";
 
 function App() {
   const { user, isAuthenticated } = useAuth0();
   const userLogged = useSelector((state) => state.user);
-  const cart = useSelector (state => state.cart)
+  const cart = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
 
-  useEffect(()=>{
+  useEffect(() => {
     const queries = queryString.parse(location.search);
-    const status = queries.status
-    const {_id, email, sub} = userLogged
-    dispatch(getMyOrders(_id))
-    if(userLogged.email && status === 'approved' ){
-      const vacio = []
-      dispatch(compraExitosa({id: _id, sub, email, cart}))
-      dispatch(removeAllProducts())
-      dispatch(saveCarrito({vacio, id: sub || _id}))
+    const status = queries.status;
+    const { _id, email, sub } = userLogged;
+    dispatch(getMyOrders(_id));
+    if (userLogged.email && status === "approved") {
+      const vacio = [];
+      dispatch(compraExitosa({ id: _id, sub, email, cart }));
+      dispatch(removeAllProducts());
+      dispatch(saveCarrito({ vacio, id: sub || _id }));
     }
-  },[userLogged])
+  }, [userLogged]);
 
   useEffect(() => {
     dispatch(getAllDishes());
@@ -89,31 +89,40 @@ function App() {
       style={{
         backgroundColor: isDarkMode ? "#000001" : "#f9f6f4",
         color: isDarkMode ? "#fffbf4" : "#000001",
-        border: isDarkMode ? "1px solid #fffbf4" : "#000001",
+        
       }}
     >
-      <Switch
-        onChange={handleSwitchChange}
-        checked={isDarkMode}
-        onColor="#007bff"
-        offColor="#bbb"
-        checkedIcon={false}
-        uncheckedIcon={false}
-        height={20}
-        width={40}
-        onHandleColor="#fff"
-        offHandleColor="#fff"
-        onHandleStyle={{ boxShadow: "none" }}
-        offHandleStyle={{ boxShadow: "none" }}
-        activeBoxShadow="0px 0px 1px 2px rgba(0, 0, 0, 0.2)"
-        aria-label="Switch to toggle between light and dark mode"
-        onLabel="Dark"
-        offLabel="Light"
-      />
+      {location.pathname !== "/dashboard" &&
+        location.pathname !== "/dashboard/users" &&
+        location.pathname !== "/dashboard/foods" &&
+        location.pathname !== "/dashboard/sales" &&
+        location.pathname !== "/dashboard/foods/edit/:id"  &&
+        (
+          <Switch
+            onChange={handleSwitchChange}
+            checked={isDarkMode}
+            onColor="#007bff"
+            offColor="#bbb"
+            checkedIcon={false}
+            uncheckedIcon={false}
+            height={20}
+            width={40}
+            onHandleColor="#fff"
+            offHandleColor="#fff"
+            onHandleStyle={{ boxShadow: "none" }}
+            offHandleStyle={{ boxShadow: "none" }}
+            activeBoxShadow="0px 0px 1px 2px rgba(0, 0, 0, 0.2)"
+            aria-label="Switch to toggle between light and dark mode"
+            onLabel="Dark"
+            offLabel="Light"
+          />
+        )}
+
       {/* <button onClick={handleModeChange}>
         {isDarkMode ? 'Desactivar modo oscuro' : 'Activar modo oscuro'}
       </button> */}
       {!location.pathname.includes("dashboard") && <Nav />}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/detail/:id" element={<Detail />} />
@@ -125,11 +134,12 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/dashboard/users" element={<UserTable />} />
         <Route path="/dashboard/foods" element={<FoodTable />} />
-        <Route path='/dashboard/sales' element={<VentasTable/>}/>
+        <Route path="/dashboard/sales" element={<VentasTable />} />
         <Route path="/dashboard/foods/edit/:id" element={<FoodUpdate />} />
         <Route path="/dashboard/foods/create" element={<CreateDishesForm />} />
         <Route path="/nosotros" element={<Nosotros />} />
       </Routes>
+      
     </div>
   );
 }

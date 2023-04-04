@@ -44,7 +44,7 @@ export const compraExitosa = (data) => {
   return async function (dispatch) {
     try {
       console.log(data);
-      const res = await axios.post("http://localhost:3001/notificar", data)
+      const res = await axios.post("https://el-bodegon-api-wine.vercel.app/notificar", data)
       // console.log(res.data);
     } catch (error) {
       console.log(error);
@@ -178,7 +178,7 @@ export const createPayment = (payload) => {
   try {
       return async function () {            
         console.log(payload);
-        await axios.post('http://localhost:3001/payment', payload)       
+        await axios.post('https://el-bodegon-api-wine.vercel.app/payment', payload)       
         // await axios.post('https://el-bodegon-api-wine.vercel.app/payment', payload)       
         .then((res)=>window.location.href= res.data.response.body.init_point)
       }
@@ -255,7 +255,7 @@ export function createAuth0User (user) {
     try {
       const {name, nickname, email, sub} = user;
       const newAuth0User = {name, nickname, email, sub}
-      const newUser = await axios.post(`http://localhost:3001/auth0Users`, newAuth0User)
+      const newUser = await axios.post(`https://el-bodegon-api-wine.vercel.app/auth0Users`, newAuth0User)
       // const newUser = await axios.post(`https://el-bodegon-api-wine.vercel.app/auth0Users`, newAuth0User)
       console.log({NUEVOUSUARIO: newUser.data});
     } catch (error) {
@@ -267,7 +267,7 @@ export function createAuth0User (user) {
 export const banUser = (id) => {
   return async dispatch => {
     console.log(id);
-    const bannedUser = await axios.put(`http://localhost:3001/auth0Users/ban/${id}`)
+    const bannedUser = await axios.put(`https://el-bodegon-api-wine.vercel.app/auth0Users/ban/${id}`)
     console.log(bannedUser);
   }
 }
@@ -275,7 +275,7 @@ export const banUser = (id) => {
 export const unbanUser = (id) => {
   return async dispatch => {
     console.log(id);
-    const unbannedUser = await axios.put(`http://localhost:3001/auth0Users/unban/${id}`)
+    const unbannedUser = await axios.put(`https://el-bodegon-api-wine.vercel.app/auth0Users/unban/${id}`)
     console.log(unbannedUser);
   } 
 }
@@ -337,7 +337,7 @@ export function getAllUsers () {
 export function getMyOrders(id) {
   return async dispatch => {
   try {
-    const myOrders = await axios.get(`http://localhost:3001/order/${id}`)
+    const myOrders = await axios.get(`https://el-bodegon-api-wine.vercel.app/order/${id}`)
   
     console.log({MISORDENES: myOrders.data});
     return dispatch({type: GET_MY_ORDERS, payload: myOrders.data})
@@ -351,7 +351,7 @@ export function getMyOrders(id) {
 export function getAllOrders() {
   return async dispatch => {
     try {
-      const allOrders = await axios.get(`http://localhost:3001/order`)
+      const allOrders = await axios.get(`https://el-bodegon-api-wine.vercel.app/order`)
       return dispatch({type: GET_ALL_ORDERS, payload: allOrders.data})
     } catch (error) {
       console.log(error);
