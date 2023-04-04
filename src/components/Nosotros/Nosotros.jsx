@@ -42,8 +42,8 @@ const Nosotros = () => {
             mas comodidad de poder elegir y pagar su comida favorita
           </p>
         </div>
-        <div class="col-7">
-          <h2>Equipo</h2>
+        <div class="col-7 ">
+          <h2 className={style.equipo}>Equipo</h2>
           <div class="row justify-content-start">
             <div class="col-6">
               <img src={Luis} alt="" width="150px" class="rounded-circle" />
