@@ -33,7 +33,7 @@ const ModelDetail = (props) => {
                             <img src={detailFood.image?.url ? detailFood.image?.url : detailFood.image} alt={detailFood.name} className="img-fluid" />
                             <div class="row align-items-center p-3">
                                 <div class="col">
-                                    <strong> Category : </strong>{detailFood.category}
+                                    <strong> Categoria : </strong>{detailFood.category}
                                 </div>
                                 <div class="col">
                                     <strong> Rating: </strong>{detailFood.rating}
@@ -42,9 +42,9 @@ const ModelDetail = (props) => {
                                     <strong> Stock: </strong>{detailFood.stock}
                                 </div>
                             </div>
-                            <p className="p-1 m-2 text-white bg-danger"><strong>Price : </strong>${detailFood.price} USD</p>
-                            <p className="p-1"><strong>Description:</strong> {detailFood.description}</p>
-                            <p className="p-1"><strong> Comments: </strong>{detailFood.comments}</p>
+                            <p className="p-1 m-2 text-white bg-warning"><strong>Precio : </strong>${detailFood.price} USD</p>
+                            <p className="p-1"><strong>Descripcion:</strong> {detailFood.description}</p>
+                            <p className="p-1"><strong> Comentarios: </strong>{detailFood.comments}</p>
 
 
                         </div>
@@ -54,7 +54,7 @@ const ModelDetail = (props) => {
                             </div>
                             <div>
                                 <Link to={'/cart'}>
-                                    <button className={style.button1} type="button" class="btn btn-outline-danger px-5 ms-1">View cart</button>
+                                    <button className={style.button1} type="button" class="btn btn-outline-warning px-5 ms-1">Ver Carrito</button>
                                 </Link>
                             </div>
 

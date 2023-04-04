@@ -24,9 +24,7 @@ const Card = ({ image, name, id, price, rating, _quantity, stock, aux, setAux, i
     <div className={style.cardContainer}>
       <div className={style.card}>
           <h2 className={style.text}>{name}</h2>
-        <Link to={`/detail/${id}`}>
           <img src={image} alt={name} className={style.card_image} />
-        </Link>
         <p style={{ margin: '10px' }} >Precio: {price} USD</p>
         {/*         <p>Rating {rating}</p>
        */}<HandlerShoppingItems dish={item} aux={aux} setAux={setAux} id={id} />
