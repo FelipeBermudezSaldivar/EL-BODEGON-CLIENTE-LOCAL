@@ -119,7 +119,7 @@ function Carrousel_Bootstrap() {
           alt="First slide"
         />
         <Carousel.Caption>
-          <h3 className={style.plato_description}>tortilla de patatas</h3>
+          <h3 className={style.plato_description}>Tortilla de Patatas</h3>
          
         </Carousel.Caption>
       </Carousel.Item>
