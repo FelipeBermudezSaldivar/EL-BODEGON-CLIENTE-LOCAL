@@ -1,9 +1,10 @@
 import PedidoActivo from "./PedidoActivo";
+import style from '../Table.module.css'
 
 const TablaPedidosActivos = ({pedidos}) => {
-    return (<>
+    return (<table className={style.table}>
         <thead>
-            <tr>
+            <tr style={{fontSize:"11px"}}>
                 <th>Dirección</th>
                 <th>Monto</th>
                 <th>Marcar entregado</th>
@@ -20,7 +21,7 @@ const TablaPedidosActivos = ({pedidos}) => {
                 }
             })}
         </tbody>
-            </>
+            </table>
     );
 }
  

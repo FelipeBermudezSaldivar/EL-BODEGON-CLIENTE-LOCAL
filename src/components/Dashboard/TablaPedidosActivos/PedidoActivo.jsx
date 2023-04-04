@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { orderDelivered } from "../../../redux/actions/actions";
 import { useState } from "react";
+import style from '../Table.module.css'
 
 const PedidoActivo = ({direccion, monto, id}) => {
     const dispatch = useDispatch()
