@@ -34,7 +34,7 @@ export const ShoppingCart = () => {
 
   if(cart[0]){
     return (
-      <div>
+      <div style={{height: "100vh"}}>
 
     <div className={style.cartContainer}>
       <div>
