@@ -2,6 +2,9 @@ import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from 'react'
 import { setFltedDishes, setCategory } from "../../redux/actions/actions";
 import style from "./CategoryFltr.module.css"
+import Button from 'react-bootstrap/Button';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+
 
 
 const CategoryFltr = ({setCurrentPage}) => {
@@ -9,6 +12,11 @@ const CategoryFltr = ({setCurrentPage}) => {
     const categories = useSelector(state => state.categories);
     const actualCategory = useSelector(state => state.actualCategory)
 
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+  
     const dispatch = useDispatch();
 
 
@@ -29,14 +37,28 @@ const CategoryFltr = ({setCurrentPage}) => {
     }
 
     return (
+        <>
         <div className={style.filter}>
-            {categories.map( 
+      </div>
+        <Button variant="outline-primary" size="lg" className={style.category} onClick={handleShow}>
+        Ver categorias 
+        </Button>
+      <Offcanvas show={show} onHide={handleClose}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Filtrar</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+        {categories.map( 
                 (category, i) => 
-                <button style = {{ height : '40px', width : '125px', borderRadius: '20px' }}onClick={handleClick} value={category} key={i} className={style.filterButton}>
+                <button style = {{ height : '50px', width : "100%"}} onClick={handleClick} value={category} key={i} className={style.filterButton}>
                     {category}
-                </button> )}
+                    
+                </button> 
+        )}
 
-        </div>
+        </Offcanvas.Body>
+      </Offcanvas>
+      </>
    
     )
 }

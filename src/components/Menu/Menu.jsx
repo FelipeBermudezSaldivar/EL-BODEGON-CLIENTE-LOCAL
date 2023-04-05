@@ -43,10 +43,12 @@ const Menu = () => {
   };
   return (
     <div className={style.menu}>
-      <h2 className={style.title}>Menú</h2>
+      <h2 className={style.title}>Nuestros platos</h2>
+      <div className={style.container}>
       <CategoryFltr setCurrentPage={setCurrentPage} />
       <Orderings setCurrentPage={setCurrentPage} setOrder={setOrder} />
       {/* <Pagination/> */}
+      </div>
       <Cards slicedDishes={currentDishes} />
       <Pagination
         totalDishes={allDishes.length}

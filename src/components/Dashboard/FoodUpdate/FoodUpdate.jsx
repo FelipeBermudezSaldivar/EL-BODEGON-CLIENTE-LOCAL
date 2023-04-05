@@ -5,6 +5,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik"
 import * as Yup from 'yup'
 import { Link } from "react-router-dom"
 import Swal from "sweetalert2"
+import style from "./FoodUpdate.module.css"
 
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -21,7 +22,7 @@ const FoodUpdate = () => {
   }, []);
   const {name, price, stock} = detailFood
   return (
-    <div >
+    <div className={style.form_container} >
       <h1>Actualiza {name}</h1>
         <Formik
         initialValues={{
