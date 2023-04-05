@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getCategories, saveCarrito } from "../../redux/actions/actions";
 import Footer from "../Footer/Footer";
+import SearchBar from "../Navbar/SearchBar";
 
 const Menu = () => {
   const dispatch = useDispatch();
@@ -44,9 +45,12 @@ const Menu = () => {
   return (
     <div className={style.menu}>
       <h2 className={style.title}>Nuestros platos</h2>
+      <CategoryFltr setCurrentPage={setCurrentPage} style={{width:"100px"}} />
       <div className={style.container}>
-      <CategoryFltr setCurrentPage={setCurrentPage} />
+      <div style={{display:"flex", flexDirection:"row", alignItems: "center", justifyContent:"space-evenly"}}>
       <Orderings setCurrentPage={setCurrentPage} setOrder={setOrder} />
+      <SearchBar/>
+      </div>
       {/* <Pagination/> */}
       </div>
       <Cards slicedDishes={currentDishes} />
