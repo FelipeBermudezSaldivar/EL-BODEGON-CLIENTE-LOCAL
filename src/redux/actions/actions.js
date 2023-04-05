@@ -128,7 +128,6 @@ export const createDish = (payload) => {
 
   try {   
     return async function () {
-      console.log(payload);
       await axios.post("http://localhost:3001/foods", payload
       ,
        {
