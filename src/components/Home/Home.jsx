@@ -150,7 +150,6 @@ const Home = () => {
           </div> 
         </div>
 
-
       <div className={style.section}>
         <p className={style.platos}>
           ¿Quieres Conocer Nuestros Menú? Haz click aquí
