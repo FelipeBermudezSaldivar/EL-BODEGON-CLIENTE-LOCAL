@@ -44,11 +44,11 @@ function App() {
   useEffect(() => {
     const queries = queryString.parse(location.search);
     const status = queries.status;
-    const { _id, email, sub } = userLogged;
+    const { _id, email, sub, name } = userLogged;
     dispatch(getMyOrders(_id));
     if (userLogged.email && status === "approved") {
       const vacio = [];
-      dispatch(compraExitosa({ id: _id, sub, email, cart }));
+      dispatch(compraExitosa({ id: _id, sub, email, cart, name }));
       dispatch(removeAllProducts());
       dispatch(saveCarrito({ vacio, id: sub || _id }));
     }

@@ -18,7 +18,7 @@ const CategoryFltr = ({setCurrentPage}) => {
     const handleShow = () => setShow(true);
   
     const dispatch = useDispatch();
-
+    const [cat, setCat] = useState(null)
 
     const handleClick = (event) => {
         if( actualCategory === event.target.value ){
@@ -26,6 +26,7 @@ const CategoryFltr = ({setCurrentPage}) => {
             dispatch(setCategory('all'))
             dispatch(setFltedDishes('all'))
             setCurrentPage(1)
+            setCat(null)
         }else{
             dispatch(setCategory(event.target.value))
             dispatch(setFltedDishes((event.target.value)))
@@ -33,6 +34,7 @@ const CategoryFltr = ({setCurrentPage}) => {
             console.log(actualCategory);
             console.log("pasa x aca");
             setCurrentPage(1)
+            setCat(event.target.value)
         }
     }
 
@@ -50,7 +52,7 @@ const CategoryFltr = ({setCurrentPage}) => {
         <Offcanvas.Body>
         {categories.map( 
                 (category, i) => 
-                <button style = {{ height : '50px', width : "100%"}} onClick={handleClick} value={category} key={i} className={style.filterButton}>
+                <button style = {cat === category ? {height : '50px', width : "100%", backgroundColor: "#ffbc0d"} :{ height : '50px', width : "100%"}} onClick={handleClick} value={category} key={i} className={style.filterButton}>
                     {category}
                     
                 </button> 

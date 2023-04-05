@@ -16,8 +16,8 @@ const Profile = () => {
             <img src={user.picture} alt="" />
             <p>{user.email}</p>
             {console.log(user)}
-            <p>Mis direcciones:</p>
-            <p>Mis pedidos: {JSON.stringify(orders)}</p>
+            {/* <p>Mis direcciones:</p> */}
+            {/* <p>Mis pedidos: {JSON.stringify(orders)}</p> */}
         </div>
         : <div> debes estar logeado</div>
     )
