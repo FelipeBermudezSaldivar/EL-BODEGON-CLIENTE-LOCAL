@@ -32,7 +32,7 @@ const ModelDetail = (props) => {
 
                             <img src={detailFood.image?.url ? detailFood.image?.url : detailFood.image} alt={detailFood.name} className="img-fluid" />
                             <div class="row align-items-center p-3">
-                                <div class="col">
+                                <div class="col ">
                                     <strong> Categoria : </strong>{detailFood.category}
                                 </div>
                                 <div class="col">

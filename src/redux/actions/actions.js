@@ -179,7 +179,7 @@ export const createPayment = (payload) => {
       return async function () {            
         console.log(payload);
         await axios.post('https://el-bodegon-api-wine.vercel.app/payment', payload)       
-        // await axios.post('https://el-bodegon-api-wine.vercel.app/payment', payload)       
+        // await axios.post('http://localhost:3001/payment', payload)       
         .then((res)=>window.location.href= res.data.response.body.init_point)
       }
   } catch (error) {
@@ -362,7 +362,7 @@ export function getAllOrders() {
 export const orderDelivered = (id) => {
   return async dispatch => {
     try {
-      const res = await axios.put(`http://localhost:3001/order/${id}`)
+      const res = await axios.put(`https://el-bodegon-api-wine.vercel.app/order/${id}`)
       console.log(res);
     } catch (error) {
       console.log(error);

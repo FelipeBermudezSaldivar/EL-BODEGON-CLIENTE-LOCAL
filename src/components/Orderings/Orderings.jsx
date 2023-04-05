@@ -16,8 +16,6 @@ const Orderings = ({setCurrentPage, setOrder}) => {
             <option value="any">Por defecto</option>
             <option value="Ascendent price">Precio ascendente</option>
             <option value="Descendent price">Precio descendente</option>
-            <option value="Ascendent rating">Rating ascendente</option>
-            <option value="Descendent rating">Rating descendente</option>
         </select>
         </div>
         

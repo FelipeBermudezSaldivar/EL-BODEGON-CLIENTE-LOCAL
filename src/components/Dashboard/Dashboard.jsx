@@ -73,7 +73,7 @@ const Dashboard = () => {
             <Col md={8}>
               <Card>
                 <Card.Body>
-                  <Card.Title>Chart</Card.Title>
+                  <Card.Title>Porcentaje de ventas por categoría</Card.Title>
                   <div style={{ height: '400px' }}>
                     <GraficoTorta pedidos={pedidos}/>
                   </div>

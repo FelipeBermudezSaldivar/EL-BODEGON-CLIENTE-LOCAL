@@ -17,7 +17,7 @@ const PedidoActivo = ({direccion, monto, id}) => {
         <tr style={display ?  displayInLine : displayNone }>
             <td>{direccion}</td>
             <td>{monto}</td>
-            <td><button onClick={() => {
+            <td style={{width: "50%"}}><button className={style.button} style={{width: "100%"}} onClick={() => {
                 dispatch(orderDelivered(id))
                 setDisplay(false)
             }}>Entregado</button></td>            
