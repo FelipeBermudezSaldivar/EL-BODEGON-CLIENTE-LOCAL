@@ -7,6 +7,7 @@ import { useState } from "react";
 import axios from "axios";
 import { validate } from "./validate";
 import Swal from "sweetalert2";
+import Footer from "../Footer/Footer";
 //import { Link } from "react-router-dom";
 
 import { Link, useNavigate } from "react-router-dom";
@@ -112,7 +113,8 @@ const User = () => {
 
     try {
       if (Object.keys(errors).length === 0) {
-        await axios.post("http://localhost:3001/users/create", datosUsuario)
+        await axios.post("https://el-bodegon-api-wine.vercel.app/users/create", datosUsuario)
+        // await axios.post("http://localhost:3001/users/create", datosUsuario)
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -276,6 +278,7 @@ const User = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllDishes, getAllUsers, getAuth0Users } from "../../redux/actions/actions";
+import { getAllDishes, getAllOrders, getAllUsers, getAuth0Users } from "../../redux/actions/actions";
 import UserItem from "./UserItem/UserItem";
 import UserList from "./UserList/UserList";
 import { Container, Row, Col, Card, CardGroup, Table} from 'react-bootstrap';
@@ -10,27 +10,28 @@ import GraficoLinea from "./GraficoLinea/GraficoLinea";
 import GraficoBarras from "./GraficoBarras/GraficoBarras";
 import GraficoTorta from "./GraficoTorta/GraficoTorta";
 import { Link } from "react-router-dom";
+import TablaPedidosActivos from "./TablaPedidosActivos/TablaPedidosActivos";
+import { all } from "axios";
 
 
 const Dashboard = () => {
-    // const users = useSelector(state => state.adminData.users)
-    // const auth0Users = useSelector(state => state.adminData.auth0Users)
-    // const [allUsers, setAllUsers] = useState([])
-    // const [cantidadUsuarios, setCantidadUsuarios] = useState(0)
+    const users = useSelector(state => state.adminData.users)
+    const auth0Users = useSelector(state => state.adminData.auth0Users)
+    const [allUsers, setAllUsers] = useState([])
+    const [cantidadUsuarios, setCantidadUsuarios] = useState(0)
+    const pedidos = useSelector(state => state.adminData.orders)
+    const productos = useSelector(state => state.allDishes)
     const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(getAuth0Users())
         dispatch(getAllUsers())
         dispatch(getAllDishes())
+        dispatch(getAllOrders())
         console.log("traigousuarios");
-        console.log();
-    },[])
-    // useEffect(()=>{
-    //     const auxUsers = users.length
-    //     setCantidadUsuarios(cantidadUsuarios + auxUsers)
-    // },[users])
+      },[])
+
   return (
-    <Container fluid>
+    <Container fluid className={style.container_dash}>
       <Row>
         <Col sm={2} className="bg-light">
           <Sidebar/>
@@ -38,29 +39,31 @@ const Dashboard = () => {
         <Col sm={10}>
           <Row className="my-3">
             <Col md={4}>
+              <Link to = '/dashboard/sales' style={{textDecoration: "none"}}>
               <Card>
                 <Card.Body>
                   <Card.Title>Ventas totales</Card.Title>
-                  <Card.Text>12</Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={4}>
-              <Link to ="/dashboard/foods">
-              <Card>
-                <Card.Body>
-                  <Card.Title>Productos</Card.Title>
-                  <Card.Text>112</Card.Text>
+                  <Card.Text>{pedidos?.length}</Card.Text>
                 </Card.Body>
               </Card>
               </Link>
             </Col>
             <Col md={4}>
-            <Link to ="/dashboard/users">
+              <Link to ="/dashboard/foods" style={{textDecoration: "none"}}>
               <Card>
                 <Card.Body>
-                  <Card.Title>Ver </Card.Title>
-                  <Card.Text>usuarios</Card.Text>
+                  <Card.Title>Productos</Card.Title>
+                  <Card.Text>{productos?.length}</Card.Text>
+                </Card.Body>
+              </Card>
+              </Link>
+            </Col>
+            <Col md={4}>
+            <Link to ="/dashboard/users" style={{textDecoration: "none"}}>
+              <Card>
+                <Card.Body>
+                  <Card.Title>Ver usuarios </Card.Title>
+                  <Card.Text>{users?.length + auth0Users?.length}</Card.Text>
                 </Card.Body>
               </Card>
               </Link>
@@ -70,11 +73,9 @@ const Dashboard = () => {
             <Col md={8}>
               <Card>
                 <Card.Body>
-                  <Card.Title>Chart</Card.Title>
-                  <div style={{ height: '300px' }}> {/* Height of the chart container */}
-                    {/* Chart component */}
-                    {/* <GraficoBarras/> */}
-                    <GraficoTorta/>
+                  <Card.Title>Porcentaje de ventas por categoría</Card.Title>
+                  <div style={{ height: '400px' }}>
+                    <GraficoTorta pedidos={pedidos}/>
                   </div>
                 </Card.Body>
               </Card>
@@ -83,23 +84,9 @@ const Dashboard = () => {
               <Card>
                 <Card.Body>
                   <Card.Title>Pedidos activos</Card.Title>
-                  <div style={{ height: '300px', overflowY: 'scroll' }}> {/* Height and scrollbar of the table container */}
+                  <div style={{ height: '400px', overflowY: 'scroll' }}>
                     <Table striped bordered>
-                      <thead>
-                        <tr>
-                          <th>N° pedido</th>
-                          <th>Dirección</th>
-                          <th>Monto</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Data 1</td>
-                          <td>Data 2</td>
-                          <td>Data 3</td>
-                        </tr>
-                        {/* More rows */}
-                      </tbody>
+                      <TablaPedidosActivos pedidos={pedidos}/>
                     </Table>
                   </div>
                 </Card.Body>

@@ -43,8 +43,24 @@ const ShoppingCheckout = () => {
         })}
         <h3>TOTAL: ${totalPrice}</h3>
         <button className={style.buttonPay} onClick={async()=>{
+            if(user){
+                const status = user.is_active || user.isActive
+                console.log(status);
+                if(!status){
+                    return (Swal.fire({
+                        title: '<strong>Tu cuenta esta inhabilitada para realizar pedidos</strong>',
+                        icon: 'warning',
+                        showCloseButton: true,
+                        focusConfirm: false,
+                        confirmButtonText:
+                          '<Link to="/account/login">Aceptar</Link>',
+                        // '<a href="//sweetalert2.github.io">links</a> ' +
+                        // 'and other HTML tags'
+                      }))
+                }
+            }
             if(user.name){
-                dispatch(createPayment(cart))
+                dispatch(createPayment({cart, email: userLogged.email, id: userLogged.sub || userLogged._id }))
             } else {
                 return (Swal.fire({
                     title: '<strong>Debes loguearte para confirmar el pedido</strong>',

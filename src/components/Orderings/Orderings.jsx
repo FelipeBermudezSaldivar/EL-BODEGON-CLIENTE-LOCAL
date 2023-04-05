@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux"
 import { setOrderings } from "../../redux/actions/actions"
+import style from "./Orderings.module.css"
 
 const Orderings = ({setCurrentPage, setOrder}) => {
     const dispatch = useDispatch()
@@ -9,14 +10,12 @@ const Orderings = ({setCurrentPage, setOrder}) => {
         setOrder(`Ordered by ${e.target.value}`)
     }
     return (
-        <div style={{ fontSize: '27px' }}>
-        <span>Ordered by:</span>
-        <select style={{ margin: '20px' }} onChange={e=> handleSort(e)}>
-            <option value="any">any</option>
-            <option value="Ascendent price">Ascendent price</option>
-            <option value="Descendent price">Descendent price</option>
-            <option value="Ascendent rating">Ascendent rating</option>
-            <option value="Descendent rating">Descendent rating</option>
+        <div >
+        <span className={style.order}>Ordenar por:</span>
+        <select className={style.orderSelect} onChange={e=> handleSort(e)}>
+            <option value="any">Por defecto</option>
+            <option value="Ascendent price">Precio ascendente</option>
+            <option value="Descendent price">Precio descendente</option>
         </select>
         </div>
         

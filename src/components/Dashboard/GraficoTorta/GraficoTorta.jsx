@@ -12,31 +12,41 @@ import style from './GraficoTorta.module.css'
 //   { name: 'Papayas', value: 100 },
 // ];
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+const COLORS = ['#87CEFA', '#77B5E5', '#679CCE', '#5783B7', '#476AA0', '#375187', '#273A70', '#172257', '#071B3E', '#001326', '#BFEFFF', '#AED6F1', '#9CC0E4', '#8BAAD7'];
 
-const GraficoTorta = () => {
+
+const GraficoTorta = ({pedidos}) => {
     const [data, setData] = useState([])
-    const categorias = useSelector(state => state.categories)
     const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(getCategories())
     },[])
 
     useEffect(()=>{
-        const auxCategories = []
-        categorias.forEach(category => {
-            auxCategories.push({name:category, value:200})
-        });
-        setData(auxCategories)
-    },[categorias])
+        const ventasPorCategoria = [];
+        const ventasPorCategoriaAux = {};
+        for (let i = 0; i < pedidos?.length; i++) {
+          for (let j = 0; j < pedidos[i].items.length; j++) {
+            const categoria = pedidos[i].items[j].category;
+            if (!ventasPorCategoriaAux[categoria]) {
+              ventasPorCategoriaAux[categoria] = 0;
+            }
+            ventasPorCategoriaAux[categoria]++;
+          }
+        }
+        for (const categoria in ventasPorCategoriaAux) {
+          ventasPorCategoria.push({ name: categoria, value: ventasPorCategoriaAux[categoria] });
+        }
+        console.log(ventasPorCategoria);
+        setData(ventasPorCategoria)
+    },[pedidos])
   return (
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "400px", width: "100%", margin: "0 300px 0 0" }}>
     <PieChart width={600} height={400}>
         {/* <div className={style.container}> */}
             
       <Pie
         data={data}
-        cx={350}
-        cy={140}
         labelLine={false}
         label={renderCustomizedLabel}
         outerRadius={130}
@@ -48,9 +58,10 @@ const GraficoTorta = () => {
             ))}
       </Pie>
       {/* <Tooltip /> */}
-      <Legend />
+      <Legend style={{ display: "inline", marginRight: "300px" }} />
             {/* </div> */}
     </PieChart>
+    </div>
   );
 };
 

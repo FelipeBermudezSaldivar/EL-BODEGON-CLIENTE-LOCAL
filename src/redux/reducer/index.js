@@ -21,6 +21,8 @@ import {
     USER_LOGIN_DATA,
     GET_AUTH0_USERS,
     SET_STORAGED_USER,
+    GET_MY_ORDERS,
+    GET_ALL_ORDERS,
 
 } from '../actions/actions'
 
@@ -31,6 +33,7 @@ const initialState = {
     categories:[],
     actualCategory: "",
     cart:[],
+    orders:[],
     totalPrice:0,
     user:{},
     adminData:{},
@@ -48,6 +51,12 @@ switch (type) {
            allDishes: payload,
            auxAllDishes: payload 
         }
+    
+    case GET_MY_ORDERS:
+        return {...state, orders: payload}
+
+    case GET_ALL_ORDERS:
+        return {...state, adminData: {...state.adminData, orders:payload}}
 
     case USER_LOGIN_DATA:
         console.log(payload.cart);
