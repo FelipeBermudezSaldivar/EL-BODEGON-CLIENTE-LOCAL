@@ -25,7 +25,7 @@ const SearchBar = () => {
   return (
       <form onSubmit={handleSubmit}>
           <input type="text" placeholder="Buscar por" onChange={handleInputChange} value={food}/>
-          <button className={style.search} type="submit">Buscar</button>
+          <button class="btn btn-primary btn-sm mb-1 ms-2" type="submit">Buscar</button>
       </form>
   )
 }
