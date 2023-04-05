@@ -34,7 +34,7 @@ export const ShoppingCart = () => {
 
   if(cart[0]){
     return (
-      <div style={{height: "100vh"}}>
+      <div style={{height: "90%"}}>
 
     <div className={style.cartContainer}>
       <div>
@@ -54,10 +54,10 @@ export const ShoppingCart = () => {
           setAux={setAux}
           />
         })}
+      <ShoppingDeleteButton aux={aux} setAux={setAux} />
       </div>
       <ShoppingCheckout className={style.checkout}/>
     </div>
-      <ShoppingDeleteButton aux={aux} setAux={setAux} />
     </div>
   ) 
   } else {
